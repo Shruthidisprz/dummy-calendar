@@ -1,0 +1,71 @@
+@import '../myVariable.scss';
+.header{
+    // border: 1px solid black;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    // z-index: 2;
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    background: none;
+    color: black;
+    // background-color: white;
+    // background-color: #006466;
+    height: 100px;
+    // width: 98vw;
+}
+// .view-button{
+//     display: grid;
+// }
+.secondary-button{
+    @include button;
+    box-shadow: $boxShadowButton;
+}
+.secondary-button:hover{
+    box-shadow: $boxShadowButtonHover;
+}
+// button{
+//     background-color: #679289;
+// }
+.current-month{
+    width: 200px;
+}
+.list-open{
+    margin-left: 10px;
+    position: absolute;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: $boxShadowDark;
+    li{
+        box-sizing: border-box;
+        padding: 5px;
+        width: 110px;
+    }
+}
+.list-open{
+    li:hover{
+        background-color: rgba(128, 128, 128, 0.25);
+    }
+}
+.list-close{
+    display: none;
+}
+.secondary-button{
+    @include button;
+    // border: 1px solid rgba(0, 0, 0, 0.4);
+    // box-shadow: $boxShadowDark;
+    box-shadow: $boxShadowButton;
+    background-color: white;
+    // background-color: #66999B;
+    width: 100px;
+    gap: 0;
+}

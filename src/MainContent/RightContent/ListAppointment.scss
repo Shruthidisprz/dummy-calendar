@@ -1,0 +1,17 @@
+@import '../../myVariable.scss';
+.event-display-side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $boxShadowButton;
+    // padding: 20px;
+    width: 160px;
+    border-radius: 5px;
+    // background-color: #CECCCC;
+    // background-color: #FDECEF;
+    // background-color: #917C78;
+    background-color: #E6E8E6;
+    color: black;
+    margin-bottom: 10px;
+}

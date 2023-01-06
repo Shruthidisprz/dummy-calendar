@@ -1,38 +1,151 @@
-.App {
-  text-align: center;
+*{
+    font-family: 'EB Garamond', serif;
 }
+body{
+    font-size: 18px;
+    /* background: #144552;
+    background: -moz-linear-gradient(left,  #144552 0%, #4d194d 100%);
+    background: -webkit-linear-gradient(left,  #144552 0%,#4d194d 100%);
+    background: linear-gradient(to right,  #144552 0%,#4d194d 100%); */
+    /* background: #006466;
+    background: -moz-linear-gradient(left,  #006466 0%, #1b3a4b 100%);
+    background: -webkit-linear-gradient(left,  #006466 0%,#1b3a4b 100%);
+    background: linear-gradient(to right,  #006466 0%,#1b3a4b 100%); */
+    /* background: #469d89;
+background: -moz-linear-gradient(left,  #469d89 0%, #1b3a4b 100%);
+background: -webkit-linear-gradient(left,  #469d89 0%,#1b3a4b 100%);
+background: linear-gradient(to right,  #469d89 0%,#1b3a4b 100%); */
+/* background: #adb5bd;
+background: -moz-linear-gradient(left,  #adb5bd 0%, #212529 100%);
+background: -webkit-linear-gradient(left,  #adb5bd 0%,#212529 100%);
+background: linear-gradient(to right,  #adb5bd 0%,#212529 100%); */
+/* background: #002855;
+background: -moz-linear-gradient(left,  #002855 0%, #33415c 100%);
+background: -webkit-linear-gradient(left,  #002855 0%,#33415c 100%);
+background: linear-gradient(to left,  #002855 0%,#33415c 100%); */
+/* background: #023e7d;
+background: -moz-linear-gradient(left,  #023e7d 0%, #001233 100%);
+background: -webkit-linear-gradient(left,  #023e7d 0%,#001233 100%);
+background: linear-gradient(to right,  #023e7d 0%,#001233 100%); */
+/* background: #006466;
+background: -moz-linear-gradient(-45deg,  #006466 0%, #065a60 24%, #065a60 49%, #144552 72%, #1b3a4b 100%);
+background: -webkit-linear-gradient(-45deg,  #006466 0%,#065a60 24%,#065a60 49%,#144552 72%,#1b3a4b 100%);
+background: linear-gradient(135deg,  #006466 0%,#065a60 24%,#065a60 49%,#144552 72%,#1b3a4b 100%); */
+/* background: #0466c8;
+background: -moz-linear-gradient(left, #0466c8 0%, #001233 100%);
+background: -webkit-linear-gradient(left, #0466c8 0%,#001233 100%);
+background: linear-gradient(to right, #0466c8 0%,#001233 100%); */
+/* background: #2d6a4f;
+background: -moz-linear-gradient(left, #2d6a4f 0%, #081c15 100%);
+background: -webkit-linear-gradient(left, #2d6a4f 0%,#081c15 100%);
+background: linear-gradient(to right, #2d6a4f 0%,#081c15 100%); */
+/* background: #c9e4ca;
+background: -moz-linear-gradient(left, #c9e4ca 0%, #55828b 52%, #364958 100%);
+background: -webkit-linear-gradient(left, #c9e4ca 0%,#55828b 52%,#364958 100%);
+background: linear-gradient(to right, #c9e4ca 0%,#55828b 52%,#364958 100%); */
+/* background: #c9e4ca;
+background: -moz-linear-gradient(left, #c9e4ca 0%, #87bba2 100%);
+background: -webkit-linear-gradient(left, #c9e4ca 0%,#87bba2 100%);
+background: linear-gradient(to right, #c9e4ca 0%,#87bba2 100%); */
+/* background: #87bba2;
+background: -moz-linear-gradient(left, #87bba2 0%, #2a6f97 100%);
+background: -webkit-linear-gradient(left, #87bba2 0%,#2a6f97 100%);
+background: linear-gradient(to right, #87bba2 0%,#2a6f97 100%); */
+/* background: #a9d6e5;
+background: -moz-linear-gradient(left, #a9d6e5 0%, #012a4a 100%);
+background: -webkit-linear-gradient(left, #a9d6e5 0%,#012a4a 100%);
+background: linear-gradient(to right, #a9d6e5 0%,#012a4a 100%); */
+/* background: #648f85;
+background: -moz-linear-gradient(top, #648f85 0%, #03151c 100%);
+background: -webkit-linear-gradient(top, #648f85 0%,#03151c 100%);
+background: linear-gradient(to bottom, #648f85 0%,#03151c 100%); */
+/* background: #9fc1b5;
+background: -moz-linear-gradient(top, #9fc1b5 1%, #648f85 52%, #03151c 100%);
+background: -webkit-linear-gradient(top, #9fc1b5 1%,#648f85 52%,#03151c 100%);
+background: linear-gradient(to bottom, #9fc1b5 1%,#648f85 52%,#03151c 100%); */
+/* background: #597b87;
+background: -moz-linear-gradient(top, #597b87 0%, #121b24 100%);
+background: -webkit-linear-gradient(top, #597b87 0%,#121b24 100%);
+background: linear-gradient(to bottom, #597b87 0%,#121b24 100%); */
+/* background: #e9eaec;
+background: -moz-linear-gradient(top, #e9eaec 1%, #597b87 48%, #121b24 100%);
+background: -webkit-linear-gradient(top, #e9eaec 1%,#597b87 48%,#121b24 100%);
+background: linear-gradient(to bottom, #e9eaec 1%,#597b87 48%,#121b24 100%); */
+/* background: #e9eaec;
+background: -moz-linear-gradient(top, #e9eaec 1%, #597b87 37%, #121b24 100%);
+background: -webkit-linear-gradient(top, #e9eaec 1%,#597b87 37%,#121b24 100%);
+background: linear-gradient(to bottom, #e9eaec 1%,#597b87 37%,#121b24 100%); */
+/* background: #9fc1b5;
+background: -moz-linear-gradient(-45deg, #9fc1b5 1%, #648f85 52%, #03151c 100%);
+background: -webkit-linear-gradient(-45deg, #9fc1b5 1%,#648f85 52%,#03151c 100%);
+background: linear-gradient(to bottom, #9fc1b5 1%,#648f85 52%,#03151c 100%); */
+/* background: #a3c2b7;
+background: -moz-linear-gradient(top, #a3c2b7 0%, #061d21 50%, #021213 100%);
+background: -webkit-linear-gradient(top, #a3c2b7 0%,#061d21 50%,#021213 100%);
+background: linear-gradient(to bottom, #a3c2b7 0%,#061d21 50%,#021213 100%); */
+    background: #a3c2b7;
+    background: -moz-linear-gradient(top, #a3c2b7 0%, #14393c 50%, #021213 100%);
+    background: -webkit-linear-gradient(top, #a3c2b7 0%,#14393c 50%,#021213 100%);
+    background: linear-gradient(to bottom, #a3c2b7 0%,#14393c 50%,#021213 100%);
+/* background: #a3c2b7;
+background: -moz-linear-gradient(top, #a3c2b7 0%, #061111 100%);
+background: -webkit-linear-gradient(top, #a3c2b7 0%,#061111 100%);
+background: linear-gradient(to bottom, #a3c2b7 0%,#061111 100%); */
+/* background: #a3c2b7;
+background: -moz-linear-gradient(top, #a3c2b7 0%, #0a2825 50%, #051a21 100%);
+background: -webkit-linear-gradient(top, #a3c2b7 0%,#0a2825 50%,#051a21 100%);
+background: linear-gradient(to bottom, #a3c2b7 0%,#0a2825 50%,#051a21 100%); */
+/* background: #a3c2b7;
+background: -moz-linear-gradient(top, #a3c2b7 0%, #0a2825 74%);
+background: -webkit-linear-gradient(top, #a3c2b7 0%,#0a2825 74%);
+background: linear-gradient(to bottom, #a3c2b7 0%,#0a2825 74%); */
+/* background-color: #081C15; */
+/* background-color: #52B788; */
+/* background-color: #023E7D; */
+/* background-color: #33415C; */
+/* background-color: #6c757d; */
+/* background-color: #353a4c; */
+/* background-color: #002855; */
+/* background-color: #023E7D; */
+/* background-color: #B7E4C7; ok*/ 
+/* background-color: #395970; */
+/* background-color: #99e2b4; */
+/* background-color: #353a4c; */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* background-image: url("https://i.pinimg.com/564x/c1/55/cd/c155cd8482890fee77b9476e179b3474.jpg"); */
+/* background-image: url("https://i.pinimg.com/564x/29/af/3e/29af3e6a78dc13f3f21f5397c9fa804a.jpg"); */
+/* background-image: url("http://wallpaperset.com/w/full/4/5/4/67432.jpg"); */
+/* background-image: url("https://wallpaperset.com/w/full/6/5/a/110566.jpg"); */
+/* background-image: url("https://static.vecteezy.com/system/resources/previews/001/905/522/original/dark-blue-background-free-photo.jpg"); */
+/* background-image: url("https://cdn.cbeditz.com/cbeditz/large/11625050028gnb3c8s93bh6yemtfapznhvpqxacoo7pxhihpfpb0gltbi5qc0rglshqxtkzebfjhayyv7lzybyehybjwyveqbmuqvjyeymftxgh.jpg"); */
+/* background-image: url("https://img.rawpixel.com/private/static/images/website/2022-05/pf-41-lukestackpoole-greenland-cabin-01a.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=0759cde431ae5fc0da0fe9e6ed6aff98"); */
+/* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxTZhBqXuLdzxUFPLfDAo30aP7o163shVKb7cxHUuZKKc_5tnZLCFkNDDHBNJuF5Wx6UE&usqp=CAU"); */
+/* background-image: url("https://wallpaperaccess.com/full/432474.png"); */
+
+background-repeat: no-repeat;
+background-size: cover;
+
+/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006466', endColorstr='#1b3a4b',GradientType=1 ); */
+
+/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#023e7d', endColorstr='#001233',GradientType=1 ); */
+
+/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002855', endColorstr='#33415c',GradientType=1 ); */
+
+/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#adb5bd', endColorstr='#212529',GradientType=1 ); */
+
+/* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#469d89', endColorstr='#1b3a4b',GradientType=1 ); */
+
+    /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006466', endColorstr='#1b3a4b',GradientType=1 ); */
+
+    color: white;
+    /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#144552', endColorstr='#4d194d',GradientType=1 ); */
+
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+li{
+    list-style: none;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+a{
+    text-decoration: none;
+    color: inherit;
 }

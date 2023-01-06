@@ -1,0 +1,38 @@
+@import '../my-calendar/src/myVariable.scss';
+.today{
+    // color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-weight: 600;
+}
+// .today-button{
+//     margin: 20px 15px;
+//     width:100px;
+//     height: 40px;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     border-style: none;
+//     border-radius: 10px;
+//     // box-shadow: $boxShadowDark;
+//     box-shadow: $boxShadowButton;
+//     // background-color: #c9f46d;
+//     background-color: white;
+//     // background-color: rgba(0, 0, 255, 0.66);
+//     color: black;
+// }
+// .today-button{
+//     @include button;
+//     box-shadow: $boxShadowButton;
+// }
+// .today-button:hover{
+//     // background-color: blue;
+//     // background-color: #9bdf08;
+//     // color: white;
+//     color: black;
+//     cursor: pointer;
+//     box-shadow: $boxShadowButtonHover;
+// }

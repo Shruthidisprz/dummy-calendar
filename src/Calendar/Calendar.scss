@@ -1,0 +1,77 @@
+@import '../myVariable.scss';
+// .calendar{
+//     background-color: white;
+// }
+.calendar-view{
+    width: 250px;
+    height: 250px;
+    font-size: 13px;
+    // box-shadow:-5px -5px 5px gray ;
+    // box-shadow: 5px 5px 20px black;
+    box-shadow: $myBoxShadow;
+    display: grid;
+}
+.calendar-top-row{
+    // display: grid;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    // justify-content: center;
+}
+.claendar-top-row-month{
+    // grid-column: 10;
+    flex: 3;
+    // box-shadow:-5px -5px 5px gray ;
+    box-shadow:$boxShadowDark;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5px 10px 0;
+
+}
+.calendar-top-row-year{
+    // grid-column: 7;
+    flex: 2;
+    // box-shadow:-5px -5px 5px gray ;
+    box-shadow:$boxShadowDark;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 10px 5px;
+}
+.calendar-days-of-week{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    justify-content: center;
+    align-items: center;
+    // gap: 2px;
+    padding-left: 10px;
+    // box-shadow:0px 2px 8px gray ;
+}
+.calendar-dates{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-auto-rows: 1fr;
+    padding-left: 10px;
+    gap: 2px;
+}
+.days-of-week{
+    font-weight: bold;
+}
+// .claendar-top-row-month{
+//     FontAwesomeIcon{
+//         font-size: 10px;
+//     }
+// }
+.arrow:hover{
+    // font-weight: bold;
+    cursor: pointer;
+}
+// .date-cell{
+//     a,a:visited{
+//     }
+// }

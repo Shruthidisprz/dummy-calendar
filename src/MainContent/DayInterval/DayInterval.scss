@@ -1,0 +1,100 @@
+.day-interval{
+    overflow: auto;
+    overflow-x: hidden;
+    // width: 650px;
+    // font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    // justify-content: start;
+    align-items: flex-start;
+    background-color: white;
+    color: black;
+    width: calc(90vw - 450px);
+    height: calc(100vh - 102px);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    box-shadow:5px -5px 20px black ;
+}
+.day-view{
+    padding-left: 300px;
+}
+.current-day{
+    position: fixed;
+    background-color: white;
+    // background: linear-gradient(to right, #2d6a4f 0%,#081c15 100%);
+    font-size: larger;
+    align-self: flex-start;
+    padding-left: 75px;
+    width: calc(85vw - 450px);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+
+}
+// .header{
+//     select{
+//         background-color: none;
+//     }
+// }
+// .time-line{
+//     height: calc(80% - 20px);
+//     // border: 1px solid black;
+// }
+// .time-interval{
+//     // border: 1px solid black;
+//     display: flex;
+//     flex-direction: column;
+//     height: 25px;
+//     align-self: flex-start;    
+//     // border: 1px solid black;
+// }
+.time-interval{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+// .time{
+//     display: flex;
+//     // align-items: center;
+//     // justify-content: center;
+//     // align-self: center;
+// }
+.one-interval{
+    display: flex;
+}
+.time{
+    width: 65px;
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+}
+hr{
+        // width: 850px;
+        width: calc(85vw - 500px);
+        // width: 100%;
+        height: 0.01ex;
+        // background-color:#008e9b;
+        background-color:rgba(128, 128, 128, 0.5);
+        border: none;
+    }
+.time-format{
+    // align-self: center;
+    width: 45px;
+    text-align: end;
+    // border: 1px solid red;
+}
+.time-line{
+    padding-top: 75px;
+}
+.event{
+    display: flex;
+    // flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    // width: 90%;
+    // border: 1px solid red;
+}
+// .event{
+//     border-right:1px solid black;
+//     border-left:1px solid black;
+// }

@@ -1,0 +1,17 @@
+.event-single-day{
+    background-color: #133C55;
+    color: white;
+    width: calc(80vw - 475px);
+    border-radius: 5px;
+    div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    span{
+        padding: 5px;
+    }
+}
+.mo-event{
+    display: none;
+}

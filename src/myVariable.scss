@@ -1,0 +1,32 @@
+$boxShadowDark: 5px 5px 10px black;
+// $myBoxShadow : 5px -5px 15px gray;
+$myBoxShadow : 8px -3px 15px black;
+$boxShadowButton: 3px 3px 8px black;
+$boxShadowButtonHover: 8px 3px 15px black;
+
+@mixin cell-format{
+    // border-bottom: 1px solid black;
+    // border-right: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+@mixin button{
+    font-size: 18px;
+    margin: 20px 15px;
+    width:100px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    border-radius: 10px;
+    // background-color: #77567A;
+    // background-color: #c9f46d;
+    // background-color: rgba(0, 0, 255, 0.66);
+    color: black;
+}
+
+// $myBoxShadow : 5px -5px 15px #8AB0AB;
