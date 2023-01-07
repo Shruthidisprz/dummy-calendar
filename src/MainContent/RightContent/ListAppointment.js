@@ -11,11 +11,12 @@ const ListAppointment=(props)=>{
             {/* {event && format(currentDate, "dd LLLL yyyy")} */}
             {event.map((item,index)=>{
                 return(
-                    (currentDate.toISOString().slice(0,10) === item.eventDate) &&
+                    (currentDate.toISOString().slice(0,10) === item.eventDate.slice(0,10)) &&
                             <li key={index} className="event-display-side">
                             <div>{item.eventName}</div>
-                            <div><span>{item.startTimeHrMin} - </span>
-                            <span> {item.endTimeHrMin}</span></div>
+                            <div><span>{item.startTimeHrMin.slice(11,16)} - </span>
+                            <span> {item.endTimeHrMin.slice(11,16)}</span></div>
+                            <div>{item.descriptionOfEvent}</div>
                             </li>
                 )})}
         </div>

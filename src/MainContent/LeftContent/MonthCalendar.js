@@ -5,7 +5,7 @@ import './MonthCalendar.scss';
 const MonthCalendar = (props)=>{
     let currentDate= props.currentDate;
     let setCurrentDate=props.setCurrentDate;
-    console.log(currentDate);
+    // console.log(currentDate);
     return (
         <div className="month-calendar">
             <SelectedDate currentDate={currentDate} setCurrentDate={setCurrentDate}/>

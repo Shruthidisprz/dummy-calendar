@@ -38,9 +38,12 @@ const MainCalendar =(props)=>{
                                     <div className='date-display'>
                                         <div>{date}</div>
                                         <div>{event.map((item,key)=>{
-                                            {console.log( item.eventDate.slice(0,10),"item date",format(setDate(value,date), "yyyy-MM-dd"),"format date")}
+                                            // {console.log( item.eventDate.slice(0,10),"item date",format(setDate(value,date), "yyyy-MM-dd"),"format date")}
+                                            console.log(item.eventDate.slice(0,10), "eventDate");
+                                            console.log(setDate(value,date).toISOString().slice(0,10), "setDAte");
                                             return(
-                                                <li index={key} className="event-month-view">{ item.eventDate===setDate(value,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
+                                                <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)===setDate(value,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
+                                                // <li index={key} className="event-month-view">{ item.eventDate===setDate(value,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
                                                 // <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)=== format(setDate(value,date), "yyyy-MM-dd") ? item.title : undefined}</li>
                                             )})}
                                         </div>
