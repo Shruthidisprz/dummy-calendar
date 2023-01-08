@@ -5,13 +5,22 @@
     align-items: center;
     justify-content: center;
     box-shadow: $boxShadowButton;
+    // font-weight: 600;
     // padding: 20px;
-    width: 160px;
+    width: 200px;
     border-radius: 5px;
     // background-color: #CECCCC;
     // background-color: #FDECEF;
     // background-color: #917C78;
     background-color: #E6E8E6;
+    // z-index: 0;
     color: black;
+    // font-size: 18px;
     margin-bottom: 10px;
+    div{
+        padding: 5px;
+    }
 }
+// .event-display-side-time{
+//     // font-size: 18px;
+// }

@@ -1,8 +1,8 @@
-import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {addHours,eachHourOfInterval,format} from "date-fns";
-import moment from "moment";
-import React, { useState } from "react";
+// import moment from "moment";
+import React from "react";
 // import React from "react";
 import './DayInterval.scss';
 import DisplayEvent from "./DisplayEvent";
@@ -10,7 +10,8 @@ import DisplayEvent from "./DisplayEvent";
 const DayInterval=(props)=>{
     const currentDate= props.currentDate;
     const event = props.event;
-    const [filteredEvent,setFilteredEvent]=useState([]);
+    const setEvent= props.setEvent;
+    // const [filteredEvent,setFilteredEvent]=useState([]);
     // console.log(currentDate.toDateString());
     // const date = currentDate.getDate();
     // console.log(date);
@@ -38,7 +39,7 @@ const DayInterval=(props)=>{
                     <div><b>{currentDate.getDate()}</b></div>
                 </div>
                 <div className="time-line">
-                    {event.map((item)=>{
+                    {/* {event.map((item)=>{
                         const start =  moment (item.startTimeHrMin,'DD-MM-YYYY HH:mm')
                         // console.log(start,"start");
                         const end =  moment (item.endTimeHrMin,'DD-MM-YYYY HH:mm')
@@ -58,7 +59,8 @@ const DayInterval=(props)=>{
                                 <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div>
                             </div>
                         )
-                    })}
+                    })} */}
+                    <DisplayEvent event={event} currentDate={currentDate} setEvent={setEvent}/>
                     {eachHourOfDay.map((day,index)=>{
                         return(
                         // <ul className="time-interval" key={index}><li className="time"><div className="time-format">{index===0||index===24 ?"0 am":format(day,"h aaa")}</div><div className="event"><hr/> hello </div></li></ul>
@@ -66,7 +68,7 @@ const DayInterval=(props)=>{
                             <div className="one-interval">
                             {/* <div className="time">{index===0||index===24 ? "00":format(day,"HH")}</div> */}
                                 <div className="time">
-                                    <span>{format(day,"HH")}</span>
+                                    <span>{format(day,"hh aaa")}</span>
                                 </div>
                                 <div className="hour-line"></div>
                             </div>
@@ -94,7 +96,7 @@ const DayInterval=(props)=>{
                     </ul>
             )})} */}
             </div>
-            {filteredEvent}
+            {/* {filteredEvent} */}
         </div>
     )
 }

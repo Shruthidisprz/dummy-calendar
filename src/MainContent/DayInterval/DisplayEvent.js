@@ -1,135 +1,160 @@
-// // import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-// // import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import moment from "moment";
+import React, { useState } from "react";
+import './DisplayEvent.scss';
+import DeleteModal from "./DeleteModal";
+import Axios from "../Axios/Axios";
+// import { setISODay } from "date-fns";
+const DisplayEvent=(props)=>{
+    const event = props.event;
+    const setEvent = props.setEvent;
+    const currentDate= props.currentDate;
+    const [openDeleteModal,setOpenDeleteModal] = useState(false);
+    // const [isDelete,setIsDelete] = useState(false);
+    const [isDelete,setIsDelete] = useState('');
+    // let Id ;
+    const handleDelete=(id)=>{
+        console.log(id,"id");
+        setIsDelete(id);
+        console.log(isDelete,"id1")
+        setOpenDeleteModal(true);
+        console.log(id,"id")
+        console.log(openDeleteModal,"open")
+        // console.log(isDelete,"delete")
+        // isDelete && deleteEvent(id);
+    }
+    
+    const deleteEvent= async (delId)=>{
+        console.log(delId,"delId");
+        // setOpenDeleteModal(true);
+        // console.log(openDeleteModal,"opendeletr")
+        // {isDelete &&
+        // openDeleteModal&&
+        console.log(delId,"id1");
+        await Axios.delete(`api/appointments/event/${delId}`)
+            const afterDelete =  event.filter((delItem)=>{
+                return delItem.id !== delId;
+            })
+            setEvent(afterDelete);
+            console.log(afterDelete,"afterDelete")
+            setOpenDeleteModal(false);
+        // console.log(openDeleteModal,'openDeleteModal')
+        // {openDeleteModal && <DeleteModal setIsDelete={setIsDelete} setOpenDeleteModal={setOpenDeleteModal} id={Id}/>}
+        // console.log(isDelete,"isDelete")
+        // isDelete && await Axios.delete(`api/appointments/event/${Id}`)
+        // isDelete && handleDelete();
+    }
+    
+    return(
+        <div>
+                {event.map((item)=>{
+                    const start =  moment (item.startTimeHrMin,'DD-MM-YYYY HH:mm')
+                    // console.log(start,"start");
+                    const end =  moment (item.endTimeHrMin,'DD-MM-YYYY HH:mm')
+                    const result = end.diff(start,'minutes')
+                    // console.log(result, "result")
+                    const eventHeight = (result / 60)*46;
+                    // console.log(parseInt(item.startTimeHrMin.slice(14,16)),"time");
+                    const topHr = parseInt(item.startTimeHrMin.slice(11,13));
+                    const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*46;
+                    console.log(topHr, "topHr");
+                    console.log(topMin, "topMin");
+                    console.log((topHr*46)+topMin+92 , "top")
+                    const isSelectedDate = currentDate.toISOString().slice(0,10) === item.eventDate.slice(0,10)
+                    return(
+                        // (topHr*46)+topMin+46
+                        // <div>
+                        <div className="event-wrapper">
+                            {/* <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>deleteEvent(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div> */}
+                            <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div>
+                        </div>
+                        /* { openDeleteModal &&
+                        // console.log(item.id)
+                        <div className="modal-background">
+                            <div className="modal-container">
+                                <div className="modal-body">
+                                    Are you sure you want to delete?
+                                </div>
+                                <div className="modal-footer">
+                                    <button onClick={()=>setOpenDeleteModal(false)}>No</button>
+                                    <button onClick={()=>{deleteEvent(item.id)}}>Yes</button>
+                                </div>
+                            </div>
+                        </div>                            
+                        } */
+                        // </div>
+                    )
+                })}
+                {/* {console.log(Id,"id3")} */}
+                {console.log(isDelete,"delete id")}
+                {openDeleteModal && <DeleteModal setOpenDeleteModal={setOpenDeleteModal} deleteEvent={deleteEvent} isDelete ={isDelete} />}
+        </div>
+    )
+}
+export default DisplayEvent;
+// onClick={()=>deleteEvent(item.id)}import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-// import { addHours, eachMinuteOfInterval, format, getHours, parseISO, subHours } from "date-fns";
-// import moment from "moment/moment";
-// // import { addHours, differenceInMinutes} from "date-fns";
-// // import { parse } from "date-fns/esm";
+// import moment from "moment";
 // import React, { useState } from "react";
-// import "./DisplayEvent.scss";
-// // import ListAppointment from "../RightContent/ListAppointment";
+// import './DisplayEvent.scss';
+// import DeleteModal from "./DeleteModal";
 // const DisplayEvent=(props)=>{
 //     const event = props.event;
-//     const myDay = props.day;
-//     const filteredEvent=props.filteredEvent;
-//     const setFilteredEvent = props.setFilteredEvent;
-//     const [dispEvent , setDispEvent] = useState(false)
+//     const setEvent = props.setEvent;
+//     const currentDate= props.currentDate;
+//     const [openDeleteModal,setOpenDeleteModal] = useState(false);
+//     const deleteEvent=(Id)=>{
+//         console.log(Id,"id");
+//         const afterDelete =  event.filter((delItem)=>{
+//             return delItem.id !== Id;
+//         })
+//         console.log(afterDelete,"afterDelete");
+//         setEvent(afterDelete);
+//         setOpenDeleteModal(false);
+//     }
 //     return(
 //         <div>
-//             {event.map((item,index)=>{
-//                 // console.log(parseISO(item.eventDate).getDate() ,"item date")
-//                 // console.log(myDay,"myDay");
-//                 // console.log(myDay.getDate() ,"myDay getDAte")
-//                 // console.log(item.startTimeHrMin.toString().slice(0,5) ,"item start time")
-//                 // console.log(item.startTimeHrMin,"start time")
-//                 // console.log(item.endTimeHrMin,"end time")
-//                 // console.log(addHours(myDay,item.startTimeHrMin.toString().slice(0,5)),"start time full")
-//                 const start =  moment (item.startTimeHrMin,'h:mm:ss a')
-//                 const end =  moment (item.endTimeHrMin,'h:mm:ss a')
-//                 const result = end.diff(start,'hours')
-//                 const none = ""
-//                 // console.log(result,"result");
-//                 // // console.log(item.startTimeHrMin.toISOString() - item.endTimeHrMin.toISOString() , "difference");
-//                 // console.log(myDay.getHours() ,"myDay getHour")
-//                 // console.log(myDay.getMinutes() ,"myDay getMinutes")
-//                 // console.log(item.startTimeHrMin.toString().slice(0,2) + result)
-//                 // console.log(addHours(myDay,result),"myday added")
-//                 // console.log(addHours(myDay,result).getHours(),"myday added value")
-//                 // // {parseISO(item.eventDate).getDate() === myDay.getDate() && item.startTimeHrMin.toString().slice(0,2) == myDay.getHours() ?setDispEvent(true) : setDispEvent(false)}
-//                 // console.log(dispEvent);
-//                 // const filterEvent =  event.map((filteredItem)=>{
-//                 //     if(parseISO(filtereditem.eventDate).getDate() === myDay.getDate() && (filtereditem.startTimeHrMin.toString().slice(0,2) == myDay.getHours()|| filtereditem.endTimeHrMin.toString().slice(0,2) == myDay.getHours())){
-//                 //         return getHours
-//                 //     }
-//                 // })
-//                 // console.log(filterEvent , "filter event")
-//                 console.log(item.startTimeHrMin.slice(11,13),"start time");
-//                 console.log(myDay.getHours(),"time line");
-//                 return(
-//                     <div className="event-single-day">
-//                         {parseISO(item.eventDate).getDate() === myDay.getDate() && item.startTimeHrMin.toString().slice(0,2) == myDay.getHours() ? <div> {item.eventName} <div><span><FontAwesomeIcon icon={faTrashCan}/></span><span><FontAwesomeIcon icon={faPen}/></span></div> </div> : none}
-//                         {parseISO(item.eventDate).getDate() === myDay.getDate() && item.endTimeHrMin.toString().slice(0,2) == myDay.getHours() && item.startTimeHrMin.toString().slice(0,2)!=subHours(myDay,1).getHours() && item.endTimeHrMin.toString()>=item.startTimeHrMin.toString() ? item.eventName : none}
-//                         {/* {console.log(item.startTimeHrMin.toString() == myDay.getHours())}
-//                         {console.log(item.endTimeHrMin.toString().slice(0,2)!=subHours(myDay,1).getHours())}
-//                         {console.log(subHours(myDay,1).getHours(), "sub hour")} */}
-//                         {/* {parseISO(item.eventDate).getDate() === myDay.getDate() && item.startTimeHrMin.toString().slice(0,2) == myDay.getHours() ? setFilteredEvent([myDay]) : none} */}
-//                         {/* {parseISO(item.eventDate).getDate() === myDay.getDate() && item.endTimeHrMin.toString().slice(0,2) == myDay.getHours() ? setFilteredEvent([myDay]) : none} */}
-//                         {/* {dispEvent}? {item.eventName} : undefined  */}
-//                         {/* {parseISO(item.eventDate).getDate() === myDay.getDate() && item.startTimeHrMin.toString().slice(0,2) == myDay.getHours() ? setDispEvent(true) : none}
-//                         // {parseISO(item.eventDate).getDate() === myDay.getDate() && item.endTimeHrMin.toString().slice(0,2) == item.startTimeHrMin.toString().slice(0,2) + result ? setDispEvent(true) : none}
-//                         // {dispEvent ? item.eventName: undefined} */}
-//                         {/* {item.eventName} */}
-//                         {/* </div>
-//                     <div className={dispEvent?"event-single-day":"no-event"}>
-//                         {item.eventName} */}
-//                     </div>
-//                 )
-//                 // if(parseISO(item.eventDate).getDate() === myDay.getDate() && item.startTimeHrMin.toString().slice(0,2) == myDay.getHours()){
-//                 //     setDispEvent(true)
-//                 //     if(parseISO(item.eventDate).getDate() === myDay.getDate() && item.endTimeHrMin.toString().slice(0,2) == addHours(myDay,result).getHours()){
-//                 //         setDispEvent(true)
-//                 //         // return{} (item.eventName)
-//                 //     }
-//                 //     if(myDay)
-//                 // }
-//             })}
+//                 {event.map((item)=>{
+//                     const start =  moment (item.startTimeHrMin,'DD-MM-YYYY HH:mm')
+//                     // console.log(start,"start");
+//                     const end =  moment (item.endTimeHrMin,'DD-MM-YYYY HH:mm')
+//                     const result = end.diff(start,'minutes')
+//                     // console.log(result, "result")
+//                     const eventHeight = (result / 60)*46;
+//                     // console.log(parseInt(item.startTimeHrMin.slice(14,16)),"time");
+//                     const topHr = parseInt(item.startTimeHrMin.slice(11,13));
+//                     const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*46;
+//                     console.log(topHr, "topHr");
+//                     console.log(topMin, "topMin");
+//                     console.log((topHr*46)+topMin+92 , "top")
+//                     const isSelectedDate = currentDate.toISOString().slice(0,10) === item.eventDate.slice(0,10)
+//                     return(
+//                         // (topHr*46)+topMin+46
+//                         // <div>
+//                         <div className="event-wrapper">
+//                             <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>setOpenDeleteModal(true)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div>
+//                             {openDeleteModal && <DeleteModal deleteEvent={deleteEvent} setOpenDeleteModal={setOpenDeleteModal} id={item.id}/>}
+//                         </div>
+//                         /* { openDeleteModal &&
+//                         // console.log(item.id)
+//                         <div className="modal-background">
+//                             <div className="modal-container">
+//                                 <div className="modal-body">
+//                                     Are you sure you want to delete?
+//                                 </div>
+//                                 <div className="modal-footer">
+//                                     <button onClick={()=>setOpenDeleteModal(false)}>No</button>
+//                                     <button onClick={()=>{deleteEvent(item.id)}}>Yes</button>
+//                                 </div>
+//                             </div>
+//                         </div>                            
+//                         } */
+//                         // </div>
+//                     )
+//                 })}
 //         </div>
-//     );
+//     )
 // }
-// export default DisplayEvent
-
-
-// // {event.map((item)=>{
-// //     if(item.eventDate == currentDate.toISOString().slice(0,10)){
-// //         console.log(item.startTimeHrMin,"start")
-// //         console.log(myDay,"myDay")
-// //         if(item.startTimeHrMin >= myDay)
-// //             return "heelo"
-// //     }
-// // })}
-
-// /* <div className="display-event">
-//             {event.map((item)=>{
-//     // if(item.startTimeHrMin === time) {
-//     //     compTime=item.eventName
-//     // }
-//     // const difference = differenceInMinutes(format(item.startTimeHrMin, "hh mm"), format(item.endTimeHrMin, "hh mm"));
-//     console.log(item.startTimeHrMin.toString())
-//     console.log(item.endTimeHrMin.toString())
-//     console.log(myDay,"myday");
-//     console.log(myDay.getHours(),"myday");
-//     // const difference = differenceInMinutes(parseISO(item.startTimeHrMin.toString()), parseISO(item.endTimeHrMin.toString()));
-//     const difference = differenceInMinutes(parseISO(item.endTimeHrMin),parseISO(item.startTimeHrMin))
-//     console.log(difference.toString());
-//     return(
-//         <div>
-//             {/* {item.startTimeHrMin >= time.getUTCHours()} ? {item.eventName} */
-// //             {/* {console.log(item.startTimeHrMin.toString() >= time.getHours().toString() && item.startTimeHrMin.toString() <= addHours(time.getHours(),1).toString())} */}
-// //             {console.log(item.startTimeHrMin.toString() >= myDay.getHours().toString() && item.startTimeHrMin.toString() <= addHours(myDay.getHours(),1).toString())}
-// //             {console.log(myDay.getHours().toString() <= item.startTimeHrMin.toString(),"myday")}
-// //             {/* {console.log(format(item.startTimeHrMin , "hh mm"))} */}
-// //             {console.log(item.startTimeHrMin.toString())}
-// //             {console.log(myDay.getHours().toString(),"myDay getHours")}
-// //             {console.log(item.endTimeHrMin.toString())}
-// //             {console.log(myDay)}
-// //             {console.log(addHours(myDay,1))}
-// //             {/* {console.log(time.getHours().getMinutes())} */}
-// //             {/* {time.getHours().toString() <= item.startTimeHrMin.toString() && item.startTimeHrMin.toString() >= addHours(time.getHours(),1).toString() && currentDate.toISOString().slice(0,10) === item.eventDate? item.eventName : undefined} */}
-// //             {myDay.getHours().toString() <= item.startTimeHrMin.toString() && addHours(myDay.getHours(),1).toString() >= item.startTimeHrMin.toString() && currentDate.toISOString().slice(0,10) === item.eventDate ? item.eventName : undefined}
-// //             {/* (myDay.getHours().toString() <= item.endTimeHrMin.toString() && item.endTimeHrMin.toString() <= addHours(myDay.getHours(),1).toString() && currentDate.toISOString().slice(0,10) === item.eventDate? setDisplayEvent(true) : setDisplayEvent(false))} */}
-// //             {/* {time.getHours().toString().includes(item.startTimeHrMin.toString())&& currentDate.toISOString().slice(0,10) === item.eventDate ? item.eventName : undefined} */}
-// //             {/* {item.endTimeHrMin.toString() >= time.getHours().toString() && item.endTimeHrMin.toString() <= addHours(time.getHours(),1).toString() && currentDate.toISOString().slice(0,10) === item.eventDate? setDisplayEvent(true) : undefined} */}
-// //             {/* {console.log(currentDate.toISOString().slice(0,10) === item.eventDate)} */}
-// //             {/* {console.log(currentDate.toISOString().slice(0,10))} */}
-// //             {/* {console.log(item.eventDate)} */}
-// //             {/* {displayEvent && item.eventName }
-// //             {console.log(displayEvent && item.eventName )} */}
-// //             {/* {item.startTimeHrMin.toString() >= time.getHours().toString() ? setDisplayEvent(true):setDisplayEvent(false)}
-// //             <div className={setDisplayEvent ? "disp":"none"}>
-// //         </div> */}
-// //         {/* {displayEvent && item.eventName} */}
-// //         </div>
-// //     )
-// // })}
-//         // </div> */}
+// export default DisplayEvent;
+// // onClick={()=>deleteEvent(item.id)}

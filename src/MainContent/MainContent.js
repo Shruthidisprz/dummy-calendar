@@ -25,13 +25,14 @@ const MainContent=(props)=>{
             console.log(getAllEvents,"getAllEvents")
             }
         getAllEvent();
+        // eslint-disable-next-line 
     },[])
     return(
         <div className="content">
             <MonthCalendar currentDate={currentDate} setCurrentDate={setCurrentDate}/>
             <Routes>
                 <Route exact path="/" element={<MainCalendar value={currentDate} onChange={setCurrentDate} event={event}/>} />
-                <Route exact path="/days" element={<DayInterval currentDate={currentDate} setCurrentDate={setCurrentDate} event={event}/> } />
+                <Route exact path="/days" element={<DayInterval currentDate={currentDate} setCurrentDate={setCurrentDate} event={event} setEvent={setEvent} />} />
             </Routes>
             <RightContent currentDate={currentDate} setCurrentDate={setCurrentDate} event={event} setEvent={setEvent} retrieveEvents={retrieveEvents}/>
         </div>
@@ -41,3 +42,17 @@ export default MainContent
 // <div><MainCalendar value={currentDate} onChange={setCurrentDate}/></div>
 // <div></div>
 // <DayInterval currentDate={currentDate} setCurrentDate={setCurrentDate} /> 
+
+
+
+/* <div className="delete-modal-background">
+            <div className="delete-modal-container">
+                <div className="delete-modal-body">
+                    Are you sure you want to delete?
+                </div>
+                <div className="delete-modal-footer">
+                    <button onClick={()=>deleteEvent(id)}>Yes</button>
+                    <button onClick={()=>setOpenDeleteModal(false)}>No</button>
+                </div>
+            </div>
+        </div> */

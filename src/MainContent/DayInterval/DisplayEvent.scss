@@ -1,17 +1,32 @@
-.event-single-day{
-    background-color: #133C55;
+.no-event{
+    display: none;
+}
+.event-wrapper{
+    position: relative;
+}
+.display-event{
+    // position:relative;
+    position:absolute;
+    // top:200px;
+    // z-index:0;
+    // background-color: #133C55;
+    background-color: #14393c;
+    padding:  0 500px;
     color: white;
     width: calc(80vw - 475px);
     border-radius: 5px;
-    div{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    margin-left: 100px;
+    opacity:0.75;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // font-size: 18px;
+    .icon{
+        font-size: 14px;
     }
     span{
-        padding: 5px;
+        span{
+            padding: 0 5px;
+        }
     }
-}
-.mo-event{
-    display: none;
 }

@@ -1,0 +1,19 @@
+@import '../Modal/CreateModal.scss';
+.delete-modal-background{
+    @include modal-background;
+    z-index: 2;
+    // background: linear-gradient(to bottom, rgba(163, 194, 183, 0.3) 0%,rgba(20, 57, 60, 0.3) 50%,rgba(2, 18, 19, 0.3) 100%);
+    // opacity: 0.5;
+}
+.delete-modal-container{
+    @include modal-container;
+    width: 25%;
+    height: 25%;
+}
+.delete-modal-body{
+    @include modal-body;
+    display: flex;
+}
+.delete-modal-footer{
+    @include modal-footer;
+}

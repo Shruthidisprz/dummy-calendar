@@ -5,7 +5,7 @@ import uuid from "react-uuid";
 import Axios from "../Axios/Axios";
 import './CreateModal.scss';
 const CreateModal = (props)=>{
-    const setOpenModal = props.setOpenModal;
+    const setOpenCreateModal = props.setOpenCreateModal;
     const currentDate = props.currentDate;
     const event = props.event;
     const setEvent = props.setEvent;
@@ -67,7 +67,7 @@ const CreateModal = (props)=>{
         setStartTime("");
         setEndTime("");
         setDescription("");
-        setOpenModal(false);
+        setOpenCreateModal(false);
         // retrieveEvents();
             // setCreateEvent({
                 //     eventName:title,
@@ -83,7 +83,7 @@ const CreateModal = (props)=>{
             <div className="modal-container">
                 <div className="modal-header">
                     <div className="modal-title"><b>Add Event</b></div>
-                    <div onClick={()=>setOpenModal(false)} className='close-button'> &times; </div>
+                    <div onClick={()=>setOpenCreateModal(false)} className='close-button'> &times; </div>
                 </div>
                 <form className="modal-body" onSubmit={isSubmit}>
             <div>
@@ -108,7 +108,7 @@ const CreateModal = (props)=>{
             </div>
         </form>
                 <div className="modal-footer">
-                    <button onClick={()=>setOpenModal(false)}>Cancel</button>
+                    <button onClick={()=>setOpenCreateModal(false)}>Cancel</button>
                     <button onClick={isSubmit}>Save</button>
                 </div>
             </div>
