@@ -1,6 +1,6 @@
 import React from 'react';
 import { DaysOfWeek } from "../../Calendar/DaysOfWeek";
-import { differenceInDays, endOfMonth, format, setDate, startOfMonth} from 'date-fns';
+import { differenceInDays, endOfMonth, setDate, startOfMonth} from 'date-fns';
 import './MainCalendar.scss'
 import Cells from './Cells';
 // import ShowEvent from './ShowEvent';
@@ -12,7 +12,7 @@ const MainCalendar =(props)=>{
     const startDate = startOfMonth(value);
     const endDate =endOfMonth(value);
     const numOfDays= differenceInDays(endDate,startDate)+1; 
-    const prevStartDateGap = startDate.getDay();
+    const prevStartDateGap = startDate.getDay()===0?7:startDate.getDay();
     let check = endDate.getDay();
     if(startDate.getDay()===0){
         (check+=1)

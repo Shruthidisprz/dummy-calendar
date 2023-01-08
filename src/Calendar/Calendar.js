@@ -14,7 +14,9 @@ const Calendar =(props)=>{
     const startDate = startOfMonth(value);
     const endDate =endOfMonth(value);
     const numOfDays= differenceInDays(endDate,startDate)+1; 
-    const prevStartDateGap = startDate.getDay();
+    const prevStartDateGap = startDate.getDay()===0?7:startDate.getDay();
+    console.log(prevStartDateGap,"prevstart");
+    // const prevStartDateGap = startDate.getDay();
     let check = endDate.getDay();
     if(startDate.getDay()===0){
         (check+=1)

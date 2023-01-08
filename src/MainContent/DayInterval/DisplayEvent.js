@@ -15,10 +15,10 @@ const DisplayEvent=(props)=>{
     const [isDelete,setIsDelete] = useState('');
     // let Id ;
     const handleDelete=(id)=>{
-        console.log(id,"id");
         setIsDelete(id);
-        console.log(isDelete,"id1")
         setOpenDeleteModal(true);
+        console.log(id,"id");
+        console.log(isDelete,"id1")
         console.log(id,"id")
         console.log(openDeleteModal,"open")
         // console.log(isDelete,"delete")
