@@ -7,7 +7,7 @@ const ListAppointment=(props)=>{
     const currentDate = props.currentDate;
     // const [startTime , setSatrtTime] = useState('');
     return(
-        <div>
+        <div className="list-item">
             {/* {event && format(currentDate, "dd LLLL yyyy")} */}
             {event.map((item,index)=>{
                 const start = parseInt(item.startTimeHrMin.slice(11,13));

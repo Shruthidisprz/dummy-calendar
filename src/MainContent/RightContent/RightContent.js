@@ -24,7 +24,9 @@ const RightContent=(props)=>{
             <div><input type="search" placeholder='Search'/></div>
         </div>
         {/* <div><b>{format(currentDate, "dd LLLL yyyy")} - Appointment</b></div> */}
-        <ListAppointment event={event} currentDate={currentDate}/>
+        <div className='list-appointment'>
+            <ListAppointment event={event} currentDate={currentDate}/>
+        </div>
     </div>
     )
 }

@@ -16,4 +16,7 @@
 }
 .delete-modal-footer{
     @include modal-footer;
+    button{
+        cursor: pointer;
+    }
 }

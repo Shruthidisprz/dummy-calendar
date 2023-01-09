@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
 import React, { useState } from "react";
 import './DisplayEvent.scss';
-import DeleteModal from "./DeleteModal";
+import DeleteModal from "../Modal/DeleteModal";
 import Axios from "../Axios/Axios";
 // import { setISODay } from "date-fns";
 const DisplayEvent=(props)=>{
@@ -11,6 +11,7 @@ const DisplayEvent=(props)=>{
     const setEvent = props.setEvent;
     const currentDate= props.currentDate;
     const [openDeleteModal,setOpenDeleteModal] = useState(false);
+    // const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [isDelete,setIsDelete] = useState(false);
     const [isDelete,setIsDelete] = useState('');
     // let Id ;
@@ -67,7 +68,7 @@ const DisplayEvent=(props)=>{
                         // <div>
                         <div className="event-wrapper">
                             {/* <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>deleteEvent(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div> */}
-                            <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div>
+                            <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} /></span></span></div>
                         </div>
                         /* { openDeleteModal &&
                         // console.log(item.id)
