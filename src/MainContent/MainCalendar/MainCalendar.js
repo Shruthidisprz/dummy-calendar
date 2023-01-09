@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { DaysOfWeek } from "../../Calendar/DaysOfWeek";
 import { differenceInDays, endOfMonth, setDate, startOfMonth} from 'date-fns';
 import './MainCalendar.scss'
 import Cells from './Cells';
+import { DataContext } from '../../DataContext/DataContext';
 // import ShowEvent from './ShowEvent';
 // import { Link } from 'react-router-dom';
-const MainCalendar =(props)=>{
-    const event = props.event;
-    const value = props.value;
-    const onChange=props.onChange;
-    const startDate = startOfMonth(value);
-    const endDate =endOfMonth(value);
+const MainCalendar =()=>{
+    const {event, currentDate,setCurrentDate} = useContext(DataContext);
+    // const event = props.event;
+    // const currentDate = props.currentDate;
+    // const setCurrentDate=props.setCurrentDate;
+    const startDate = startOfMonth(currentDate);
+    const endDate =endOfMonth(currentDate);
     const numOfDays= differenceInDays(endDate,startDate)+1; 
     const prevStartDateGap = startDate.getDay()===0?7:startDate.getDay();
     let check = endDate.getDay();
@@ -19,9 +21,9 @@ const MainCalendar =(props)=>{
     }
     const afterEndDateGap=check===0?check:7-check;
     const handleClickDate=(date)=>{
-        const clickDate = setDate(value, date);
+        const clickDate = setDate(currentDate, date);
         // console.log(clickDate ,"clickDate");
-        onChange(clickDate);
+        setCurrentDate(clickDate);
     }
     return(
         <div className='main-calendar'>
@@ -31,20 +33,20 @@ const MainCalendar =(props)=>{
                     {Array.from({length:prevStartDateGap-1}).map((index)=><div key={index}><Cells/></div>)}
                     {Array.from({length:numOfDays}).map((days,index)=>{
                         const date = index+1;
-                        const isCurrentDate = date===value.getDate();
+                        const isCurrentDate = date===currentDate.getDate();
                         return(
                             <div key={date} onClick={()=>handleClickDate(date)}  className="date-cells">
                                 <Cells isActive={isCurrentDate}>
                                     <div className='date-display'>
                                         <div>{date}</div>
                                         <div>{event.map((item,key)=>{
-                                            // {console.log( item.eventDate.slice(0,10),"item date",format(setDate(value,date), "yyyy-MM-dd"),"format date")}
+                                            // {console.log( item.eventDate.slice(0,10),"item date",format(setDate(currentDate,date), "yyyy-MM-dd"),"format date")}
                                             console.log(item.eventDate.slice(0,10), "eventDate");
-                                            console.log(setDate(value,date).toISOString().slice(0,10), "setDAte");
+                                            console.log(setDate(currentDate,date).toISOString().slice(0,10), "setDAte");
                                             return(
-                                                <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)===setDate(value,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
-                                                // <li index={key} className="event-month-view">{ item.eventDate===setDate(value,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
-                                                // <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)=== format(setDate(value,date), "yyyy-MM-dd") ? item.title : undefined}</li>
+                                                <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
+                                                // <li index={key} className="event-month-view">{ item.eventDate===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
+                                                // <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)=== format(setDate(currentDate,date), "yyyy-MM-dd") ? item.title : undefined}</li>
                                             )})}
                                         </div>
                                     </div>

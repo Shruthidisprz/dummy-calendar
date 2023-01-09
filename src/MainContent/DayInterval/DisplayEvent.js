@@ -1,15 +1,17 @@
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './DisplayEvent.scss';
 import DeleteModal from "../Modal/DeleteModal";
 import Axios from "../Axios/Axios";
+import { DataContext } from "../../DataContext/DataContext";
 // import { setISODay } from "date-fns";
-const DisplayEvent=(props)=>{
-    const event = props.event;
-    const setEvent = props.setEvent;
-    const currentDate= props.currentDate;
+const DisplayEvent=()=>{
+    const {event,setEvent,currentDate} = useContext(DataContext);
+    // const event = props.event;
+    // const setEvent = props.setEvent;
+    // const currentDate= props.currentDate;
     const [openDeleteModal,setOpenDeleteModal] = useState(false);
     // const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [isDelete,setIsDelete] = useState(false);

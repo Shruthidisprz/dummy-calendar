@@ -1,4 +1,4 @@
-@import '../Modal/CreateModal.scss';
+@import '../../myVariable.scss';
 .delete-modal-background{
     @include modal-background;
     z-index: 2;

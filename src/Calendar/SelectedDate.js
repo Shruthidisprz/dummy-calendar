@@ -1,9 +1,11 @@
-import React from "react";
-import format from "date-fns/format";
+import React, { useContext } from "react";
+// import format from "date-fns/format";
 import './SelectedDate.scss';
-const SelectedDate =(props)=>{
-    let currentDate= props.currentDate;
-    let setCurrentDate=props.setCurrentDate;
+import { DataContext } from "../DataContext/DataContext";
+const SelectedDate =()=>{
+    // let currentDate= props.currentDate;
+    // let setCurrentDate=props.setCurrentDate;
+    const {setCurrentDate} = useContext(DataContext);
     const handleClickToday=()=>setCurrentDate(new Date());
 
     return(

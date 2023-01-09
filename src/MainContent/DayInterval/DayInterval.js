@@ -2,15 +2,15 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {addHours,eachHourOfInterval,format} from "date-fns";
 // import moment from "moment";
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../DataContext/DataContext";
 // import React from "react";
 import './DayInterval.scss';
 import DisplayEvent from "./DisplayEvent";
 
-const DayInterval=(props)=>{
-    const currentDate= props.currentDate;
-    const event = props.event;
-    const setEvent= props.setEvent;
+const DayInterval=()=>{
+    const {currentDate} = useContext(DataContext);
+    // const currentDate= props.currentDate;
     // const [filteredEvent,setFilteredEvent]=useState([]);
     // console.log(currentDate.toDateString());
     // const date = currentDate.getDate();
@@ -60,11 +60,11 @@ const DayInterval=(props)=>{
                             </div>
                         )
                     })} */}
-                    <DisplayEvent event={event} currentDate={currentDate} setEvent={setEvent}/>
+                    <DisplayEvent/>
                     {eachHourOfDay.map((day,index)=>{
                         return(
                         // <ul className="time-interval" key={index}><li className="time"><div className="time-format">{index===0||index===24 ?"0 am":format(day,"h aaa")}</div><div className="event"><hr/> hello </div></li></ul>
-                        <div className="time-interval">
+                        <div className="time-interval" key={index}>
                             <div className="one-interval">
                             {/* <div className="time">{index===0||index===24 ? "00":format(day,"HH")}</div> */}
                                 <div className="time">

@@ -1,10 +1,12 @@
 // import { format, parse, parseISO } from "date-fns";
 // import { format } from "date-fns";
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../DataContext/DataContext";
 import './ListAppointment.scss';
-const ListAppointment=(props)=>{
-    const event = props.event;
-    const currentDate = props.currentDate;
+const ListAppointment=()=>{
+    const {event,currentDate} = useContext(DataContext);
+    // const event = props.event;
+    // const currentDate = props.currentDate;
     // const [startTime , setSatrtTime] = useState('');
     return(
         <div className="list-item">
