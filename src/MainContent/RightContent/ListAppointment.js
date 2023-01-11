@@ -10,6 +10,7 @@ const ListAppointment=()=>{
     // const [startTime , setSatrtTime] = useState('');
     return(
         <div className="list-item">
+            {/* <div className="list-item-wrapper"> */}
             {/* {event && format(currentDate, "dd LLLL yyyy")} */}
             {event.map((item,index)=>{
                 const start = parseInt(item.startTimeHrMin.slice(11,13));
@@ -33,6 +34,7 @@ const ListAppointment=()=>{
                             <div>{item.descriptionOfEvent}</div>
                             </li>
                 )})}
+                {/* </div> */}
         </div>
     )
 }

@@ -12,7 +12,7 @@ const SelectedDate =()=>{
         <div className="today"> 
             {/* <p>Selected Date : {format(currentDate,"dd LLLL yyyy")}</p> */}
             {/* <button className="today-button" onClick={()=>handleClickToday()}>Today</button> */}
-            <button className="secondary-button" onClick={()=>handleClickToday()}>Today</button>
+            <button className="primary-button" onClick={()=>handleClickToday()}>Today</button>
         </div>
     )
 }

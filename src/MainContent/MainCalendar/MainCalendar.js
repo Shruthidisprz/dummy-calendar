@@ -41,8 +41,8 @@ const MainCalendar =()=>{
                                         <div>{date}</div>
                                         <div>{event.map((item,key)=>{
                                             // {console.log( item.eventDate.slice(0,10),"item date",format(setDate(currentDate,date), "yyyy-MM-dd"),"format date")}
-                                            console.log(item.eventDate.slice(0,10), "eventDate");
-                                            console.log(setDate(currentDate,date).toISOString().slice(0,10), "setDAte");
+                                            // console.log(item.eventDate.slice(0,10), "eventDate");
+                                            // console.log(setDate(currentDate,date).toISOString().slice(0,10), "setDAte");
                                             return(
                                                 <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
                                                 // <li index={key} className="event-month-view">{ item.eventDate===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>

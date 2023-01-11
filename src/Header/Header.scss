@@ -20,11 +20,11 @@
 // .view-button{
 //     display: grid;
 // }
-.secondary-button{
+.primary-button{
     @include button;
     box-shadow: $boxShadowButton;
 }
-.secondary-button:hover{
+.primary-button:hover{
     box-shadow: $boxShadowButtonHover;
 }
 // button{
@@ -59,7 +59,7 @@
 .list-close{
     display: none;
 }
-.secondary-button{
+.primary-button{
     @include button;
     // border: 1px solid rgba(0, 0, 0, 0.4);
     // box-shadow: $boxShadowDark;

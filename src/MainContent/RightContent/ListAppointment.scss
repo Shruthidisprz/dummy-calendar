@@ -23,7 +23,12 @@
     }
 }
 .list-item{
-    align-self: center;
+    // align-self: center;
+    position: relative;
+    // height: 850px;
+    height: calc(100vh - 300px);
+    width: 250px;
+    overflow-y: scroll;
 }
 // .event-display-side-time{
 //     // font-size: 18px;

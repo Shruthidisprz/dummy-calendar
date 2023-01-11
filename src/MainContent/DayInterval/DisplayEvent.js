@@ -6,47 +6,56 @@ import './DisplayEvent.scss';
 import DeleteModal from "../Modal/DeleteModal";
 import Axios from "../Axios/Axios";
 import { DataContext } from "../../DataContext/DataContext";
+import UpdateModal from "../Modal/UpdateModal";
 // import { setISODay } from "date-fns";
 const DisplayEvent=()=>{
-    const {event,setEvent,currentDate} = useContext(DataContext);
+    const {event,setEvent,currentDate,setIsId,setIsEditEvent} = useContext(DataContext);
     // const event = props.event;
     // const setEvent = props.setEvent;
     // const currentDate= props.currentDate;
     const [openDeleteModal,setOpenDeleteModal] = useState(false);
+    const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [openUpdateModal, setOpenUpdateModal] = useState(false);
-    // const [isDelete,setIsDelete] = useState(false);
-    const [isDelete,setIsDelete] = useState('');
+    // const [isId,setisId] = useState(false);
     // let Id ;
     const handleDelete=(id)=>{
-        setIsDelete(id);
+        setIsId(id);
         setOpenDeleteModal(true);
-        console.log(id,"id");
-        console.log(isDelete,"id1")
-        console.log(id,"id")
-        console.log(openDeleteModal,"open")
-        // console.log(isDelete,"delete")
-        // isDelete && deleteEvent(id);
+        // console.log(id,"id");
+        // console.log(isId,"id1")
+        // console.log(id,"id")
+        // console.log(openDeleteModal,"open")
+        // console.log(isId,"delete")
+        // isId && deleteEvent(id);
+    }
+    const handleEdit=(editId)=>{
+        const filteredEvent = event.filter((item)=>{
+            return item.id === editId
+        })
+        setIsId(filteredEvent);
+        setIsEditEvent(true);
+        setOpenUpdateModal(true);
     }
     
     const deleteEvent= async (delId)=>{
-        console.log(delId,"delId");
+        // console.log(delId,"delId");
         // setOpenDeleteModal(true);
         // console.log(openDeleteModal,"opendeletr")
-        // {isDelete &&
+        // {isId &&
         // openDeleteModal&&
-        console.log(delId,"id1");
+        // console.log(delId,"id1");
         await Axios.delete(`api/appointments/event/${delId}`)
             const afterDelete =  event.filter((delItem)=>{
                 return delItem.id !== delId;
             })
             setEvent(afterDelete);
-            console.log(afterDelete,"afterDelete")
+            // console.log(afterDelete,"afterDelete")
             setOpenDeleteModal(false);
         // console.log(openDeleteModal,'openDeleteModal')
-        // {openDeleteModal && <DeleteModal setIsDelete={setIsDelete} setOpenDeleteModal={setOpenDeleteModal} id={Id}/>}
-        // console.log(isDelete,"isDelete")
-        // isDelete && await Axios.delete(`api/appointments/event/${Id}`)
-        // isDelete && handleDelete();
+        // {openDeleteModal && <DeleteModal setisId={setisId} setOpenDeleteModal={setOpenDeleteModal} id={Id}/>}
+        // console.log(isId,"isId")
+        // isId && await Axios.delete(`api/appointments/event/${Id}`)
+        // isId && handleDelete();
     }
     
     return(
@@ -61,16 +70,16 @@ const DisplayEvent=()=>{
                     // console.log(parseInt(item.startTimeHrMin.slice(14,16)),"time");
                     const topHr = parseInt(item.startTimeHrMin.slice(11,13));
                     const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*46;
-                    console.log(topHr, "topHr");
-                    console.log(topMin, "topMin");
-                    console.log((topHr*46)+topMin+92 , "top")
+                    // console.log(topHr, "topHr");
+                    // console.log(topMin, "topMin");
+                    // console.log((topHr*46)+topMin+92 , "top")
                     const isSelectedDate = currentDate.toISOString().slice(0,10) === item.eventDate.slice(0,10)
                     return(
                         // (topHr*46)+topMin+46
                         // <div>
                         <div className="event-wrapper">
                             {/* <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>deleteEvent(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div> */}
-                            <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} /></span></span></div>
+                            <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} onClick={()=>handleEdit(item.id)} /></span></span></div>
                         </div>
                         /* { openDeleteModal &&
                         // console.log(item.id)
@@ -90,8 +99,9 @@ const DisplayEvent=()=>{
                     )
                 })}
                 {/* {console.log(Id,"id3")} */}
-                {console.log(isDelete,"delete id")}
-                {openDeleteModal && <DeleteModal setOpenDeleteModal={setOpenDeleteModal} deleteEvent={deleteEvent} isDelete ={isDelete} />}
+                {/* {console.log(isId,"delete id")} */}
+                {openDeleteModal && <DeleteModal setOpenDeleteModal={setOpenDeleteModal} deleteEvent={deleteEvent} />}
+                {openUpdateModal && <UpdateModal setOpenUpdateModal={setOpenUpdateModal}/>}
         </div>
     )
 }

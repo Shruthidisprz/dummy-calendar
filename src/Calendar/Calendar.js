@@ -17,7 +17,7 @@ const Calendar =()=>{
     const endDate =endOfMonth(currentDate);
     const numOfDays= differenceInDays(endDate,startDate)+1; 
     const prevStartDateGap = startDate.getDay()===0?7:startDate.getDay();
-    console.log(prevStartDateGap,"prevstart");
+    // console.log(prevStartDateGap,"prevstart");
     // const prevStartDateGap = startDate.getDay();
     let check = endDate.getDay();
     if(startDate.getDay()===0){
@@ -30,7 +30,7 @@ const Calendar =()=>{
     const nextYear=()=>setCurrentDate(addYears(currentDate,1));
     const handleClickDate=(date)=>{
         const clickDate = setDate(currentDate, date);
-        console.log(clickDate);
+        console.log(clickDate,"click");
         setCurrentDate(clickDate);
     }
     return(

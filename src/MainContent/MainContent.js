@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import MonthCalendar from "./LeftContent/MonthCalendar";
 import DayInterval from './DayInterval/DayInterval';
 import './MainContent.scss';
-import Axios from "./Axios/Axios";
+// import Axios from "./Axios/Axios";
 // import Calendar from "../Calendar/Calendar";
 import MainCalendar from "./MainCalendar/MainCalendar";
 import { Route, Routes } from "react-router-dom";
@@ -12,25 +12,10 @@ import ErrorPopUp from "./Modal/ErrorPopUp";
 const MainContent=()=>{  
     // const [event, setEvent]=useState([]);
 
-    const {event,setEvent,errorPopUp} = useContext(DataContext);
-        const retrieveEvents = async ()=>{
-            try{
-                const response =  await Axios.get("api/appointments/all-appointments");
-                // console.log(response.data,"data");
-                // setEvent(response.data);
-                return response.data;
-            }
-            catch(error){
-                console.log(error);
-            }
-        }
+    const {errorPopUp,getAllEvent} = useContext(DataContext);
+        
         // retrieveEvents();
     useEffect(()=>{
-        const getAllEvent = async () => {
-            const getAllEvents = await retrieveEvents();
-            getAllEvents && setEvent(getAllEvents,...event);
-            console.log(getAllEvents,"getAllEvents")
-            }
         getAllEvent();
         // eslint-disable-next-line 
     },[])
@@ -43,7 +28,7 @@ const MainContent=()=>{
             </Routes>
             <RightContent/>
             {/* {console.log(FlashMessage,"flash")} */}
-            {console.log(errorPopUp,"error pop up")}
+            {/* {console.log(errorPopUp,"error pop up")} */}
             {errorPopUp && <ErrorPopUp/>}
         </div>
     );

@@ -11,7 +11,7 @@ const RightContent=()=>{
     // const [openCreateModal,setOpenCreateModal]=useState(false);
     return(
     <div className='right-content'>
-        <div><button className='secondary-button' onClick={()=>setOpenCreateModal(true)}>
+        <div><button className='primary-button' onClick={()=>setOpenCreateModal(true)}>
             <span><b>Create</b></span>
             <FontAwesomeIcon icon={faPlus} className="icon"></FontAwesomeIcon></button>
         </div>

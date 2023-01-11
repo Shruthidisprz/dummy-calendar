@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../DataContext/DataContext";
 import './DeleteModal.scss';
 const DeleteModal = (props) =>{
     console.log("open1")
+    const {isId} = useContext(DataContext);
     const deleteEvent = props.deleteEvent;
     // const deleteSingleEvent = props.deleteSingleEvent;
     const setOpenDeleteModal=props.setOpenDeleteModal;
     // const setIsDelete = props.setIsDelete;
-    const isDelete = props.isDelete;
+    // const isId = props.isId;
     // const id = props.id;
     // console.log(id,"id modal")
     return(
@@ -17,8 +19,8 @@ const DeleteModal = (props) =>{
                 </div>
                 <div className="delete-modal-footer">
                     {/* <button onClick={()=>deleteEvent(id)}>Yes</button> */}
-                    <button onClick={()=>deleteEvent(isDelete)}>Yes</button>
-                    {/* <button onClick={()=>setIsDelete(true)}>Yes</button> */}
+                    <button onClick={()=>deleteEvent(isId)}>Yes</button>
+                    {/* <button onClick={()=>setisId(true)}>Yes</button> */}
                     {/* <button onClick={()=>deleteSingleEvent(id)}>Yes</button> */}
                     {/* <button>Yes</button> */}
                     <button onClick={()=>setOpenDeleteModal(false)}>No</button>
