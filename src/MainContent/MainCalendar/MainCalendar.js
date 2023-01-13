@@ -34,21 +34,40 @@ const MainCalendar =()=>{
                     {Array.from({length:numOfDays}).map((days,index)=>{
                         const date = index+1;
                         const isCurrentDate = date===currentDate.getDate();
+                        const filterEvent = event.filter((filter)=>{
+                            return filter.eventDate.slice(0,10)===setDate(currentDate,date).toISOString().slice(0,10);
+                        })
+                        // console.log(filterEvent)
                         return(
                             <div key={date} onClick={()=>handleClickDate(date)}  className="date-cells">
                                 <Cells isActive={isCurrentDate}>
                                     <div className='date-display'>
                                         <div>{date}</div>
-                                        <div>{event.map((item,key)=>{
-                                            // {console.log( item.eventDate.slice(0,10),"item date",format(setDate(currentDate,date), "yyyy-MM-dd"),"format date")}
-                                            // console.log(item.eventDate.slice(0,10), "eventDate");
-                                            // console.log(setDate(currentDate,date).toISOString().slice(0,10), "setDAte");
+                                        {/* <div>{event.map((item,key)=>{ */}
+                                            {/* {filterEvent && filterEvent.length <=2 ? filterEvent.map((filterItem,key)=>{
                                             return(
-                                                <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
-                                                // <li index={key} className="event-month-view">{ item.eventDate===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
+                                                <div className='event-month-view-wrapper'>
+                                                <div index={key} className="event-month-view"> {filterItem.eventName}</div>
+                                                </div>
+                                            )})
+                                        :filterEvent.slice(0,2).map((filterItem,key)=>{
+                                            return(
+                                                <div className='event-month-view-wrapper'>
+                                                <div index={key} className="event-month-view"> {filterItem.eventName}</div>
+                                                </div>
+                                            )})} */}
+                                            {filterEvent && (filterEvent.length >=3 ? filterEvent.slice(0,2):filterEvent).map((filterItem,key)=>{
+                                                return(
+                                                    <div className='event-month-view-wrapper'>
+                                                    <div index={key} className="event-month-view"> {filterItem.eventName}</div>
+                                                    </div>
+                                                )})}
+                                            {filterEvent && filterEvent.length>=3 &&
+                                            <div className='see-more'><b>+<span>{filterEvent.length-2}</span> more</b></div>}
+                                                {/* // <li index={key} className="event-month-view">{ item.eventDate===setDate(currentDate,date).toISOString().slice(0,10) ? item.eventName : undefined}</li>
                                                 // <li index={key} className="event-month-view">{ item.eventDate.slice(0,10)=== format(setDate(currentDate,date), "yyyy-MM-dd") ? item.title : undefined}</li>
-                                            )})}
-                                        </div>
+                                            // })} */}
+                                        {/* </div> */}
                                     </div>
                                 </Cells>
                             </div>
