@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from "react";
-import MonthCalendar from "./LeftContent/MonthCalendar";
 import DayInterval from './DayInterval/DayInterval';
 import './MainContent.scss';
 // import Axios from "./Axios/Axios";
@@ -9,10 +8,13 @@ import { Route, Routes } from "react-router-dom";
 import RightContent from "./RightContent/RightContent";
 import { DataContext } from "../DataContext/DataContext";
 import ErrorPopUp from "./Modal/ErrorPopUp";
+import { ServiceContext } from "../DataContext/Services";
+import LeftContent from "./LeftContent/LeftContent";
 const MainContent=()=>{  
     // const [event, setEvent]=useState([]);
 
-    const {errorPopUp,getAllEvent} = useContext(DataContext);
+    const {errorPopUp} = useContext(DataContext);
+    const {getAllEvent} = useContext(ServiceContext);
         
         // retrieveEvents();
     useEffect(()=>{
@@ -21,7 +23,7 @@ const MainContent=()=>{
     },[])
     return(
         <div className="content">
-            <MonthCalendar/>
+            <LeftContent/>
             <Routes>
                 <Route exact path="/" element={<MainCalendar/>} />
                 <Route exact path="/days" element={<DayInterval/>} />

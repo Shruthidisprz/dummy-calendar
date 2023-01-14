@@ -4,16 +4,17 @@ import moment from "moment";
 import React, { useContext, useState } from "react";
 import './DisplayEvent.scss';
 import DeleteModal from "../Modal/DeleteModal";
-import Axios from "../Axios/Axios";
+// import Axios from "../Axios/Axios";
 import { DataContext } from "../../DataContext/DataContext";
 import UpdateModal from "../Modal/UpdateModal";
+import { ServiceContext } from "../../DataContext/Services";
 // import { setISODay } from "date-fns";
 const DisplayEvent=()=>{
-    const {event,setEvent,currentDate,setIsId,setIsEditEvent} = useContext(DataContext);
+    const {event,currentDate,setIsId,setIsEditEvent,isId,isEditEvent} = useContext(DataContext);
+    const{setOpenDeleteModal,openDeleteModal} = useContext(ServiceContext);
     // const event = props.event;
     // const setEvent = props.setEvent;
     // const currentDate= props.currentDate;
-    const [openDeleteModal,setOpenDeleteModal] = useState(false);
     const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [isId,setisId] = useState(false);
@@ -21,8 +22,8 @@ const DisplayEvent=()=>{
     const handleDelete=(id)=>{
         setIsId(id);
         setOpenDeleteModal(true);
-        // console.log(id,"id");
-        // console.log(isId,"id1")
+        console.log(id,"id");
+        console.log(isId,"id1")
         // console.log(id,"id")
         // console.log(openDeleteModal,"open")
         // console.log(isId,"delete")
@@ -32,31 +33,14 @@ const DisplayEvent=()=>{
         const filteredEvent = event.filter((item)=>{
             return item.id === editId
         })
-        setIsId(filteredEvent);
-        setIsEditEvent(true);
+        setIsEditEvent(filteredEvent);
+        console.log(isEditEvent,"isEdit");
+        // setIsId(filteredEvent);
+        // setIsEditEvent(true);
         setOpenUpdateModal(true);
     }
     
-    const deleteEvent= async (delId)=>{
-        // console.log(delId,"delId");
-        // setOpenDeleteModal(true);
-        // console.log(openDeleteModal,"opendeletr")
-        // {isId &&
-        // openDeleteModal&&
-        // console.log(delId,"id1");
-        await Axios.delete(`api/appointments/event/${delId}`)
-            const afterDelete =  event.filter((delItem)=>{
-                return delItem.id !== delId;
-            })
-            setEvent(afterDelete);
-            // console.log(afterDelete,"afterDelete")
-            setOpenDeleteModal(false);
-        // console.log(openDeleteModal,'openDeleteModal')
-        // {openDeleteModal && <DeleteModal setisId={setisId} setOpenDeleteModal={setOpenDeleteModal} id={Id}/>}
-        // console.log(isId,"isId")
-        // isId && await Axios.delete(`api/appointments/event/${Id}`)
-        // isId && handleDelete();
-    }
+    
     
     return(
         <div>
@@ -100,7 +84,7 @@ const DisplayEvent=()=>{
                 })}
                 {/* {console.log(Id,"id3")} */}
                 {/* {console.log(isId,"delete id")} */}
-                {openDeleteModal && <DeleteModal setOpenDeleteModal={setOpenDeleteModal} deleteEvent={deleteEvent} />}
+                {openDeleteModal && <DeleteModal />}
                 {openUpdateModal && <UpdateModal setOpenUpdateModal={setOpenUpdateModal}/>}
         </div>
     )

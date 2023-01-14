@@ -1,15 +1,16 @@
 @import '../my-calendar/src/myVariable.scss';
-.cells,.selected-cells{
-    @include cell-format;
+.main-calendar{
+    .cells,.selected-cells{
+    // @include cell-format;
     display: flex;
-    // height: 100%;
-    // width: 100%;
+    height: 100%;
+    width: 100%;
     align-items: flex-start;
     justify-content: center;
     // border-right: 1px solid black;
     // border-bottom: 1px solid black;
     cursor: pointer;
-}
+    }
     .date-cells{
         .cells:hover{
         background-color: rgba(128, 128, 128, 0.25);
@@ -17,14 +18,16 @@
         }
     }
     .date-cells{
-.selected-cells{
-    // background-color: #0C120C;
-    background-color: #a3c2b7;
-    // background-color: #008e9b;
-    // color: white;
-    color: black;
-    // font-weight: 900;
-    // border-radius: 100%;
-}
+        .selected-cells{
+            // background-color: #0C120C;
+            background-color: #a3c2b7;
+            // background-color: #008e9b;
+            // color: white;
+            color: black;
+            // font-weight: 900;
+            // border-radius: 100%;
+        }
     }
+}
+
 // background-color: rgb(229, 73, 99);

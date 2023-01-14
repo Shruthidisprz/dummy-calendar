@@ -25,13 +25,13 @@ const ListAppointment=()=>{
                 return(
                     (currentDate.toISOString().slice(0,10) === item.eventDate.slice(0,10)) &&
                             <li key={index} className="event-display-side">
-                            <div>{item.eventName}</div>
+                            <div className="event-name">{item.eventName}</div>
                             {/* {(start >12) ? setSatrtTime(((start%12)+12) + item.startTimeHrMin.slice(13,16)) : setSatrtTime((start%12) + item.startTimeHrMin.slice(13,16))} */}
                             <div><span>{(start>=12) ? startTime+" pm" : startTime+" am"} - </span>
                             <span> {(end>=12) ? endTime+" pm" : endTime+" am"}</span></div>
                             {/* <div><span>{item.startTimeHrMin.slice(11,16)} - </span>
                             <span> {item.endTimeHrMin.slice(11,16)}</span></div> */}
-                            <div>{item.descriptionOfEvent}</div>
+                            <div className="event-name">{item.descriptionOfEvent}</div>
                             </li>
                 )})}
                 {/* </div> */}

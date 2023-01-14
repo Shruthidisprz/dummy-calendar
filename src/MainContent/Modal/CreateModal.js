@@ -34,7 +34,7 @@ const CreateModal = ()=>{
                 endTimeHrMin:moment(myEvent.eventDate + ' ' + myEvent.endTimeHrMin, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ss[Z]'),    
                 descriptionOfEvent:myEvent.descriptionOfEvent, 
             }
-            const response = await Axios.post("api/appointments/event",request);
+            const response = await Axios.post("api/appointments",request);
             // console.log(response.data,"response");
             // console.log(event,"event")
             // setIsEventCreated(true);
@@ -68,10 +68,14 @@ const CreateModal = ()=>{
         // console.log(dateTime,"dateTime")
         // // console.log(formatISO(parseISO(newEvent.eventDate)) , "eventdate")
         // console.log(newEvent.startTimeHrMin,"starttime")
-        
-        createEvents(newEvent);
+        // console.log(moment(newEvent.eventDate+' ' +newEvent.startTimeHrMin,'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ss[Z]') >= moment(new Date()).format('YYYY-MM-DDTHH:mm:ss[Z]'),"time compare");
+        // console.log(moment(newEvent.eventDate+' ' +newEvent.startTimeHrMin,'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm'));
+        // console.log(moment(new Date()).format('YYYY-MM-DD HH:mm'))
+        // console.log(moment(newEvent.eventDate+' ' +newEvent.startTimeHrMin,'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') >= moment(new Date()).format('YYYY-MM-DD HH:mm'))
+        moment(newEvent.eventDate+' ' +newEvent.startTimeHrMin,'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') >= moment(new Date()).format('YYYY-MM-DD HH:mm')? createEvents(newEvent):setErrorPopUp("Cannot create events for the past")
         // isEventCreated && setEvent([...event,newEvent])
         // console.log(isEventCreated);
+        // createEvents(newEvent)
         setTitle("");
         setEventDate(eventDate);
         setStartTime("");
