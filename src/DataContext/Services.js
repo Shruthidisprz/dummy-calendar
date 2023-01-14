@@ -1,6 +1,7 @@
 import { formatISO, parseISO } from "date-fns";
 import moment from "moment";
 import React, { createContext, useContext, useState } from "react";
+import uuid from "react-uuid";
 import Axios from "../MainContent/Axios/Axios";
 import { DataContext } from "./DataContext";
 const ServiceContext =  createContext();
@@ -67,8 +68,41 @@ const ServiceContextProvider = ({children})=>{
             console.log(error.response.data,"error")
         }
     }
+    const createEvents = async(myEvent)=>{
+        // var dateStartTime = moment(event.eventDate + ' ' + event.startTimeHrMin, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ss[Z]')
+        // console.log(dateStartTime);
+        try{
+            const request = {
+                id:uuid(),
+                eventName : myEvent.eventName,
+                eventDate:formatISO(parseISO(myEvent.eventDate)),
+                startTimeHrMin:moment(myEvent.eventDate + ' ' + myEvent.startTimeHrMin, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ss[Z]'),
+                endTimeHrMin:moment(myEvent.eventDate + ' ' + myEvent.endTimeHrMin, 'YYYY-MM-DD HH:mm').format('YYYY-MM-DDTHH:mm:ss[Z]'),    
+                descriptionOfEvent:myEvent.descriptionOfEvent, 
+            }
+            const response = await Axios.post("api/appointments",request);
+            // console.log(response.data,"response");
+            // console.log(event,"event")
+            // setIsEventCreated(true);
+            setEvent([...event,response.data]);
+            // response.data && setEvent([...event,{
+            //     eventName:myEvent.eventName,
+            //     eventDate:myEvent.eventDate,
+            //     startTimeHrMin:myEvent.startTimeHrMin,
+            //     endTimeHrMin:myEvent.endTimeHrMin,     
+            //     descriptionOfEvent:myEvent.descriptionOfEvent, 
+            // }]);
+            // console.log(isEventCreated,"eventcreate");
+            console.log(event ,"eventvb")
+        }
+        catch(error){
+            setErrorPopUp(error.response.data);
+            console.log(error.response.data,"error");
+        }
+        // console.log(errorPopUp,"errorPopUp");
+    }
     return(
-        <ServiceContext.Provider value={{getAllEvent,deleteEvent,setOpenDeleteModal,openDeleteModal,editEvent}}>
+        <ServiceContext.Provider value={{getAllEvent,deleteEvent,setOpenDeleteModal,openDeleteModal,editEvent,createEvents}}>
             {children}
         </ServiceContext.Provider>
     )
