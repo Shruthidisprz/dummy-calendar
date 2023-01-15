@@ -1,10 +1,11 @@
 import './RightContent.scss';
 import React, { useContext } from 'react';
-import CreateModal from '../Modal/CreateModal';
+// import CreateModal from '../Modal/CreateModal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
 import ListAppointment from './ListAppointment';
 import { DataContext } from '../../DataContext/DataContext';
+import CreateUpdateModal from '../Modal/CreateUpdateModal';
 // import { format } from 'date-fns';
 const RightContent=()=>{
     const {openCreateModal,setOpenCreateModal} = useContext(DataContext);
@@ -15,7 +16,8 @@ const RightContent=()=>{
             <span><b>Create</b></span>
             <FontAwesomeIcon icon={faPlus} className="icon"></FontAwesomeIcon></button>
         </div>
-        {openCreateModal&&<CreateModal/>}
+        {openCreateModal&&<CreateUpdateModal/>}
+        {/* {openCreateModal&&<CreateModal/>} */}
         <div className='search-bar'>
             <div><FontAwesomeIcon icon={faMagnifyingGlass}  className="icon"></FontAwesomeIcon></div>
             <div><input type="search" placeholder='Search'/></div>

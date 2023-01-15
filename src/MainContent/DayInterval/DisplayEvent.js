@@ -1,21 +1,22 @@
 import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import moment from "moment";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import './DisplayEvent.scss';
 import DeleteModal from "../Modal/DeleteModal";
 // import Axios from "../Axios/Axios";
 import { DataContext } from "../../DataContext/DataContext";
-import UpdateModal from "../Modal/UpdateModal";
+// import UpdateModal from "../Modal/UpdateModal";
 import { ServiceContext } from "../../DataContext/Services";
+import CreateUpdateModal from "../Modal/CreateUpdateModal";
 // import { setISODay } from "date-fns";
 const DisplayEvent=()=>{
-    const {event,currentDate,setIsId,setIsEditEvent,isId,isEditEvent} = useContext(DataContext);
+    const {event,currentDate,setIsId,setIsEditEvent,isId,isEditEvent,setOpenCreateModal,OpenCreateModal} = useContext(DataContext);
     const{setOpenDeleteModal,openDeleteModal} = useContext(ServiceContext);
     // const event = props.event;
     // const setEvent = props.setEvent;
     // const currentDate= props.currentDate;
-    const [openUpdateModal, setOpenUpdateModal] = useState(false);
+    // const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [openUpdateModal, setOpenUpdateModal] = useState(false);
     // const [isId,setisId] = useState(false);
     // let Id ;
@@ -37,7 +38,8 @@ const DisplayEvent=()=>{
         console.log(isEditEvent,"isEdit");
         // setIsId(filteredEvent);
         // setIsEditEvent(true);
-        setOpenUpdateModal(true);
+        // setOpenUpdateModal(true);
+        setOpenCreateModal(true);
     }
     
     
@@ -85,7 +87,9 @@ const DisplayEvent=()=>{
                 {/* {console.log(Id,"id3")} */}
                 {/* {console.log(isId,"delete id")} */}
                 {openDeleteModal && <DeleteModal />}
-                {openUpdateModal && <UpdateModal setOpenUpdateModal={setOpenUpdateModal}/>}
+                {OpenCreateModal && <CreateUpdateModal/>}
+                {/* {openUpdateModal && <UpdateModal setOpenUpdateModal={setOpenUpdateModal}/>} */}
+                {/* {openUpdateModal && <UpdateModal setOpenUpdateModal={setOpenUpdateModal}/>} */}
         </div>
     )
 }

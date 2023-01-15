@@ -1,6 +1,7 @@
 @import '../my-calendar/src/myVariable.scss';
 .modal-background{
     @include modal-background;
+    z-index: 2;
 }
 
 .modal-container{
