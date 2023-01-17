@@ -15,6 +15,32 @@
     border-top-right-radius: 25px;
     box-shadow:5px -5px 20px black ;
 }
+.present-time-wrapper{
+    width: calc(85vw - 515px);
+    color: blue;
+    // position: relative;
+    // width: calc(80vw - 475px);
+    // width: 10px;
+    .circle-icon{
+        position: relative;
+        padding-left: 68px;
+    }
+    .present-time{
+        position: relative;
+        // padding: 0 500px;
+        height: 2px;
+        border: none;
+        width: 100%;
+        left: 85px;
+        // list-style-type: disc;
+        // right:800px ;
+        // padding:  0 500px;
+        // margin-left: 70px;  
+        
+        background-color: blue;
+        // position: absolute;
+    }
+}
 .day-view{
     padding-left: 300px;
 }
@@ -78,15 +104,15 @@
     justify-content: center;
     align-items: flex-end;
 }
-hr{
-        // width: 850px;
-        width: calc(85vw - 500px);
-        // width: 100%;
-        height: 0.01ex;
-        // background-color:#008e9b;
-        background-color:rgba(128, 128, 128, 0.5);
-        border: none;
-    }
+// hr{
+//         // width: 850px;
+//         width: calc(85vw - 500px);
+//         // width: 100%;
+//         height: 0.01ex;
+//         // background-color:#008e9b;
+//         background-color:rgba(128, 128, 128, 0.5);
+//         border: none;
+//     }
 .time-format{
     // align-self: center;
     width: 45px;

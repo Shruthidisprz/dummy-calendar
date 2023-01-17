@@ -1,8 +1,10 @@
 // import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {addHours,eachHourOfInterval,format} from "date-fns";
 // import moment from "moment";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../DataContext/DataContext";
 // import React from "react";
 import './DayInterval.scss';
@@ -10,6 +12,7 @@ import DisplayEvent from "./DisplayEvent";
 
 const DayInterval=()=>{
     const {currentDate} = useContext(DataContext);
+    const[currentTime,setCurrentTime]=useState();
     // const currentDate= props.currentDate;
     // const [filteredEvent,setFilteredEvent]=useState([]);
     // console.log(currentDate.toDateString());
@@ -31,6 +34,15 @@ const DayInterval=()=>{
     })
     // console.log(eachHourOfDay);
     // console.log(new Date())
+    useEffect(()=>{
+        console.log(format(currentDate,"yyyy LL dd"),"date")
+        console.log(format(new Date(),"yyyy LL dd"),"cur")
+        console.log(format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd"))
+        format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd") ?
+        setCurrentTime((new Date().getHours()*45.8) + ((new Date().getMinutes()/60)*(45.8))+45) : setCurrentTime(0)
+        // setCurrentTime((0*46) + ((30/60)*46)+46)
+        // console.log(currentTime,"tie")
+    })
     return(
         <div className="day-view">
             <div className="day-interval">
@@ -60,6 +72,7 @@ const DayInterval=()=>{
                             </div>
                         )
                     })} */}
+                    <div className={currentTime===0 ? "no-event": "present-time-wrapper"}><FontAwesomeIcon icon={faCircle} className="circle-icon" style={{top:currentTime+14}}/> <div className="present-time" style={{top:currentTime}}></div></div>
                     <DisplayEvent/>
                     {eachHourOfDay.map((day,index)=>{
                         return(
