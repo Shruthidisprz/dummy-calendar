@@ -12,7 +12,7 @@ import CreateUpdateModal from "../Modal/CreateUpdateModal";
 // import { formatISO, parseISO } from "date-fns";
 // import { setISODay } from "date-fns";
 const DisplayEvent=()=>{
-    const {event,currentDate,setIsId,setIsEditEvent,isId,isEditEvent,setOpenCreateModal,OpenCreateModal} = useContext(DataContext);
+    const {event,currentDate,setIsEditEvent,setOpenCreateModal,OpenCreateModal} = useContext(DataContext);
     const{setOpenDeleteModal,openDeleteModal} = useContext(ServiceContext);
     // const event = props.event;
     // const setEvent = props.setEvent;
@@ -22,10 +22,10 @@ const DisplayEvent=()=>{
     // const [isId,setisId] = useState(false);
     // let Id ;
     const handleDelete=(id)=>{
-        setIsId(id);
+        // setIsId(id);
         setOpenDeleteModal(true);
-        console.log(id,"id");
-        console.log(isId,"id1")
+        // console.log(id,"id");
+        // console.log(isId,"id1")
         // console.log(id,"id")
         // console.log(openDeleteModal,"open")
         // console.log(isId,"delete")
@@ -36,7 +36,7 @@ const DisplayEvent=()=>{
             return item.id === editId
         })
         setIsEditEvent(filteredEvent);
-        console.log(isEditEvent,"isEdit");
+        // console.log(isEditEvent,"isEdit");
         // setIsId(filteredEvent);
         // setIsEditEvent(true);
         // setOpenUpdateModal(true);
@@ -46,7 +46,7 @@ const DisplayEvent=()=>{
     // const currentTimeMin = (new Date().getMinutes()/60)*46
     
     // console.log(currentTime)
-    console.log((new Date().getMinutes()/60)*46,"min")
+    // console.log((new Date().getMinutes()/60)*46,"min")
     // console.log((new Date().getHours())+10)
     // const currentTimeMin = new 
     return(
@@ -59,10 +59,15 @@ const DisplayEvent=()=>{
                 // console.log(result, "result")
                 // const eventHeight = (result / 60)*46;
                 const eventHeight = (result / 60)*45;
+                console.log(eventHeight,"height")
                 // console.log(parseInt(item.startTimeHrMin.slice(14,16)),"time");
                 const topHr = parseInt(item.startTimeHrMin.slice(11,13));
-                const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*45.8;
-                // const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*46;
+                // const topHr = parseInt(item.startTimeHrMin.getHours());
+                // const topHr = moment(item.startTimeHrMin).getHours();
+                // const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*45.8;
+                // const topMin= ((moment(item.startTimeHrMin).getMinutes())/60)*45.8;
+                // const topMin= (parseInt(item.startTimeHrMin.getMinutes())/60)*45.8;
+                const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*46;
                 console.log(topHr, "topHr");
                 // console.log(topMin, "topMin");
                 // console.log((topHr*46)+topMin+92 , "top")
@@ -72,7 +77,8 @@ const DisplayEvent=()=>{
                     // <div>
                     <div className="event-wrapper">
                         {/* <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>deleteEvent(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil}/></span></span></div> */}
-                        <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*45.8)+topMin+45.8, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} onClick={()=>handleEdit(item.id)} /></span></span></div>
+                        <div className={isSelectedDate? (eventHeight >= 11.25 ? "display-event" : "enlarge") : "no-event"} style={{height:eventHeight,top:(topHr*45.8)+topMin+45.8, padding:"0px"}} ><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} onClick={()=>handleEdit(item.id)} /></span></span></div>
+                        {/* <div className={isSelectedDate?"display-event" : "no-event"} style={{height:eventHeight,top:(topHr*45.8)+topMin+45.8, padding:"0px"}} ><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} onClick={()=>handleEdit(item.id)} /></span></span></div> */}
                         {/* <div className={isSelectedDate? "display-event" : "no-event"}style={{height:eventHeight,top:(topHr*46)+topMin+46, padding:"0px"}}><span>{isSelectedDate && item.eventName}</span><span><span><FontAwesomeIcon className="icon" icon={faTrash} onClick={()=>handleDelete(item.id)}/></span><span><FontAwesomeIcon className="icon"icon={faPencil} onClick={()=>handleEdit(item.id)} /></span></span></div> */}
                     </div>
                     /* { openDeleteModal &&

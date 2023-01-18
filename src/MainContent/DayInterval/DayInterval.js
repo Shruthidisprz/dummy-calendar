@@ -34,15 +34,16 @@ const DayInterval=()=>{
     })
     // console.log(eachHourOfDay);
     // console.log(new Date())
+    // eslint-disable-next-line 
     useEffect(()=>{
-        console.log(format(currentDate,"yyyy LL dd"),"date")
-        console.log(format(new Date(),"yyyy LL dd"),"cur")
-        console.log(format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd"))
+        // console.log(format(currentDate,"yyyy LL dd"),"date")
+        // console.log(format(new Date(),"yyyy LL dd"),"cur")
+        // console.log(format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd"))
         format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd") ?
-        setCurrentTime((new Date().getHours()*45.8) + ((new Date().getMinutes()/60)*(45.8))+45) : setCurrentTime(0)
+        setCurrentTime((new Date().getHours()*45.8) + ((new Date().getMinutes()/60)*(45.8))+46) : setCurrentTime(0)
         // setCurrentTime((0*46) + ((30/60)*46)+46)
         // console.log(currentTime,"tie")
-    })
+    },[currentDate])
     return(
         <div className="day-view">
             <div className="day-interval">

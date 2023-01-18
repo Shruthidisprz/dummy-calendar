@@ -2,24 +2,29 @@
 // import { format } from "date-fns";
 // import { formatISO, parseISO } from "date-fns";
 import moment from "moment/moment";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../../DataContext/DataContext";
 import { ServiceContext } from "../../DataContext/Services";
 import './ListAppointment.scss';
 const ListAppointment=()=>{
     // const {event,currentDate} = useContext(DataContext);
-    const {currentDate,event} = useContext(DataContext);
-    const {getEventByDate,getByDate} = useContext(ServiceContext);
+    // const {currentDate,event} = useContext(DataContext);
+    const {currentDate} = useContext(DataContext);
+    const {getAllEventByDate,getByDate} = useContext(ServiceContext);
     // const event = props.event;
     // const currentDate = props.currentDate;
     // const [startTime , setSatrtTime] = useState('');
-    // event && getEventByDate(moment(currentDate,"DD-MM-YYYY").format("YYYY-MM-DD"));
-    // console.log(getByDate)
+    useEffect(()=>{
+        getAllEventByDate(moment(currentDate,"DD-MM-YYYY").format("YYYY-MM-DD"));
+        console.log(getByDate,"get")
+        // eslint-disable-next-line
+    },[currentDate,getByDate])
 
     // console.log(getEventByDate.eventDate,"date");
     return(
         <div>
-            {event.map((item,index)=>{
+            {getByDate && getByDate.map((item,index)=>{
+            // {event.map((item,index)=>{
                 const start = parseInt(item.startTimeHrMin.slice(11,13));
                 const end = parseInt(item.endTimeHrMin.slice(11,13));
                 const startTime = (start%12===0)?(12+item.startTimeHrMin.slice(13,16)):(start%12) + item.startTimeHrMin.slice(13,16);

@@ -8,7 +8,7 @@ const ServiceContext =  createContext();
 const ServiceContextProvider = ({children})=>{
     const {event,setEvent,setErrorPopUp,isEditEvent} = useContext(DataContext);
     const [openDeleteModal,setOpenDeleteModal] = useState(false);
-    const [getByDate,setGetByDate]= useState([]);
+    const [getByDate,setGetByDate]= useState('');
     const retrieveEvents = async ()=>{
             const response =  await Axios.get("api/appointments");
             // console.log(response.data,"data");
@@ -103,11 +103,20 @@ const ServiceContextProvider = ({children})=>{
         // console.log(errorPopUp,"errorPopUp");
     }
     const getEventByDate = async(date)=>{
-        const response =await Axios.get("api/appointments/date",date);
-        setGetByDate(...getByDate,response.data);
+        const response =await Axios.get("api/appointments/date?date="+date);
+        return response.data;
+        // console.log(response.data,"response")
+        // setGetByDate(...getByDate,response.data);
+        // setGetByDate(response.data);
     }
+    const getAllEventByDate = async (date) => {
+        const getAllEventsByDate = await getEventByDate(date);
+        getAllEventsByDate && setGetByDate(getAllEventsByDate);
+        // console.log(getAllEvents,"getAllEvents")
+    }
+    console.log(getByDate,"event")
     return(
-        <ServiceContext.Provider value={{getAllEvent,deleteEvent,setOpenDeleteModal,openDeleteModal,editEvent,createEvents,getEventByDate}}>
+        <ServiceContext.Provider value={{getAllEvent,deleteEvent,setOpenDeleteModal,openDeleteModal,editEvent,createEvents,getAllEventByDate,getByDate,setGetByDate}}>
             {children}
         </ServiceContext.Provider>
     )

@@ -21,9 +21,10 @@
     justify-content: space-between;
     align-items: center;
     border:1px solid #14393c;
+    font-size: 16px;
     // font-size: 18px;
     .icon{
-        font-size: 14px;
+        font-size: 13px;
         cursor: pointer;
     }
     span{
@@ -31,4 +32,22 @@
             padding: 0 5px;
         }
     }
+    transition: all 0s linear;
+}
+.enlarge{
+    @extend .display-event;
+    // padding-bottom: 2px;
+    height: 12px;
+    font-size: 14px;
+    .icon{
+        font-size: 10px;
+    }
+}
+.enlarge:hover{
+    transform: scaleY(2);
+    // transform: scale3d(0.75,2,1);
+    // height: 100px;
+    // background-color: #071819;
+    // background-color: rgb(202, 202, 108);
+    // color: black;
 }

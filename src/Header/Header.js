@@ -1,4 +1,6 @@
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { addDays, addMonths, format, subDays, subMonths } from 'date-fns';
 import {  useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -30,7 +32,7 @@ return(
         <div><button onClick={next} className="primary-button">Next</button></div>
         <div className='view-button'>
             {/* <button onClick={handleClickNavigation} className="primary-button">{ButtonName()}</button> */}
-            <button onClick={handleClickNavigation} className="primary-button">{ButtonName()}</button>
+            <button onClick={handleClickNavigation} className="primary-button">{ButtonName()}<FontAwesomeIcon icon={faAngleDown} className="down-arrow-icon"/></button>
             <div className={navigate?"list-open":"list-close"}>
                 {/* <li className='list'><Link to="/"><li onClick={handleClickNavigation}>Month</li></Link></li>
                 <li className='list'><Link to="/days"><li onClick={handleClickNavigation}>Day</li></Link></li> */}
