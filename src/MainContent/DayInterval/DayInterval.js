@@ -1,8 +1,9 @@
 // import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-regular-svg-icons";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {addHours,eachHourOfInterval,format} from "date-fns";
+// import moment from "moment";
 // import moment from "moment";
 import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../DataContext/DataContext";
@@ -34,15 +35,9 @@ const DayInterval=()=>{
     })
     // console.log(eachHourOfDay);
     // console.log(new Date())
-    // eslint-disable-next-line 
     useEffect(()=>{
-        // console.log(format(currentDate,"yyyy LL dd"),"date")
-        // console.log(format(new Date(),"yyyy LL dd"),"cur")
-        // console.log(format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd"))
-        format(currentDate,"yyyy LL dd")===format(new Date(),"yyyy LL dd") ?
-        setCurrentTime((new Date().getHours()*45.8) + ((new Date().getMinutes()/60)*(45.8))+46) : setCurrentTime(0)
-        // setCurrentTime((0*46) + ((30/60)*46)+46)
-        // console.log(currentTime,"tie")
+        format(currentDate,"yyyy LL dd") === format(new Date(),"yyyy LL dd") ? setCurrentTime((new Date().getHours()*45.8) + ((new Date().getMinutes()/60)*(45.8))+46) : setCurrentTime(0)
+
     },[currentDate])
     return(
         <div className="day-view">
@@ -73,7 +68,7 @@ const DayInterval=()=>{
                             </div>
                         )
                     })} */}
-                    <div className={currentTime===0 ? "no-event": "present-time-wrapper"}><FontAwesomeIcon icon={faCircle} className="circle-icon" style={{top:currentTime+14}}/> <div className="present-time" style={{top:currentTime}}></div></div>
+                    <div className={currentTime===0 ? "no-event": "present-time-wrapper"}><FontAwesomeIcon icon={faCircle} className="circle-icon" style={{top:currentTime+12}}/> <div className="present-time" style={{top:currentTime}}></div></div>
                     <DisplayEvent/>
                     {eachHourOfDay.map((day,index)=>{
                         return(

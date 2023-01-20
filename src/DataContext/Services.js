@@ -64,9 +64,10 @@ const ServiceContextProvider = ({children})=>{
             // setDescription(myEvent.descriptionOfEvent);
             // console.log(response.data);
             getAllEvent();
+            // setCurrentDate(parseISO(myEvent.eventDate));
         }catch(error){
             setErrorPopUp(error.response.data);
-            console.log(error.response.data,"error")
+            // console.log(error.response.data,"error")
         }
     }
     const createEvents = async(myEvent)=>{
@@ -85,7 +86,9 @@ const ServiceContextProvider = ({children})=>{
             // console.log(response.data,"response");
             // console.log(event,"event")
             // setIsEventCreated(true);
-            setEvent([...event,response.data]);
+            // console.log(response.data);
+            response.data && getAllEvent();
+            // setEvent([...event,response.data]);
             // response.data && setEvent([...event,{
             //     eventName:myEvent.eventName,
             //     eventDate:myEvent.eventDate,
@@ -94,11 +97,11 @@ const ServiceContextProvider = ({children})=>{
             //     descriptionOfEvent:myEvent.descriptionOfEvent, 
             // }]);
             // console.log(isEventCreated,"eventcreate");
-            console.log(event ,"eventvb")
+            // console.log(event ,"eventvb")
         }
         catch(error){
             setErrorPopUp(error.response.data);
-            console.log(error.response.data,"error");
+            // console.log(error.response.data,"error");
         }
         // console.log(errorPopUp,"errorPopUp");
     }
@@ -114,7 +117,7 @@ const ServiceContextProvider = ({children})=>{
         getAllEventsByDate && setGetByDate(getAllEventsByDate);
         // console.log(getAllEvents,"getAllEvents")
     }
-    console.log(getByDate,"event")
+    // console.log(getByDate,"event")
     return(
         <ServiceContext.Provider value={{getAllEvent,deleteEvent,setOpenDeleteModal,openDeleteModal,editEvent,createEvents,getAllEventByDate,getByDate,setGetByDate}}>
             {children}

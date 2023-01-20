@@ -12,7 +12,7 @@ import CreateUpdateModal from "../Modal/CreateUpdateModal";
 // import { formatISO, parseISO } from "date-fns";
 // import { setISODay } from "date-fns";
 const DisplayEvent=()=>{
-    const {event,currentDate,setIsEditEvent,setOpenCreateModal,OpenCreateModal} = useContext(DataContext);
+    const {event,currentDate,setIsEditEvent,setOpenCreateModal,OpenCreateModal,setIsId} = useContext(DataContext);
     const{setOpenDeleteModal,openDeleteModal} = useContext(ServiceContext);
     // const event = props.event;
     // const setEvent = props.setEvent;
@@ -22,7 +22,7 @@ const DisplayEvent=()=>{
     // const [isId,setisId] = useState(false);
     // let Id ;
     const handleDelete=(id)=>{
-        // setIsId(id);
+        setIsId(id);
         setOpenDeleteModal(true);
         // console.log(id,"id");
         // console.log(isId,"id1")
@@ -59,7 +59,7 @@ const DisplayEvent=()=>{
                 // console.log(result, "result")
                 // const eventHeight = (result / 60)*46;
                 const eventHeight = (result / 60)*45;
-                console.log(eventHeight,"height")
+                // console.log(eventHeight,"height")
                 // console.log(parseInt(item.startTimeHrMin.slice(14,16)),"time");
                 const topHr = parseInt(item.startTimeHrMin.slice(11,13));
                 // const topHr = parseInt(item.startTimeHrMin.getHours());
@@ -68,7 +68,7 @@ const DisplayEvent=()=>{
                 // const topMin= ((moment(item.startTimeHrMin).getMinutes())/60)*45.8;
                 // const topMin= (parseInt(item.startTimeHrMin.getMinutes())/60)*45.8;
                 const topMin= (parseInt(item.startTimeHrMin.slice(14,16))/60)*46;
-                console.log(topHr, "topHr");
+                // console.log(topHr, "topHr");
                 // console.log(topMin, "topMin");
                 // console.log((topHr*46)+topMin+92 , "top")
                 const isSelectedDate = currentDate.toISOString().slice(0,10) === item.eventDate.slice(0,10)

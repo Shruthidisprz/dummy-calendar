@@ -40,9 +40,15 @@ const CreateUpdateModal = ()=>{
             endTimeHrMin:endTime,     
             descriptionOfEvent:description,
         }
-        moment(newEvent.eventDate+' ' +newEvent.startTimeHrMin,'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') >= moment(new Date()).format('YYYY-MM-DD HH:mm')? (isEditEvent ? editEvent(newEvent) :  createEvents(newEvent)):setErrorPopUp("Cannot create events for the past")
-        setOpenCreateModal(false);
-        setIsEditEvent('');
+        if(newEvent.eventName.trim()!=="" && newEvent.startTimeHrMin.trim()!=="" && newEvent.endTimeHrMin.trim()!==""){
+            moment(newEvent.eventDate+' ' +newEvent.startTimeHrMin,'YYYY-MM-DD HH:mm').format('YYYY-MM-DD HH:mm') >= moment(new Date()).format('YYYY-MM-DD HH:mm')? (isEditEvent ? editEvent(newEvent) :  createEvents(newEvent)):setErrorPopUp("Cannot create events for the past")
+            setOpenCreateModal(false);
+            setIsEditEvent('');
+        }
+        else{
+            setErrorPopUp("Please fill out all the fields");
+            // setOpenCreateModal(true);
+        }
         // editEvent(newEvent)
         // console.log(newEvent.eventDate,"dateee")
         // setTitle("");
@@ -96,27 +102,27 @@ const CreateUpdateModal = ()=>{
                         <div onClick={()=>handleCancel()} className='close-button'> &times; </div>
                     </div>
                     <form className="modal-body" onSubmit={isSubmit}>
-                <div>
-                    <label>Event Title</label>
-                    <input type='text' required value={title} onChange={(e)=>setTitle(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Event Date</label>
-                    <input type='date' value={eventDate} onChange={(e)=>{setEventDate(e.target.value)}}/>
-                </div>
-                <div>
-                    <label>From Time</label>
-                    <input type='time' value={startTime} onChange={(e)=>{setStartTime(e.target.value)}}/>
-                </div>
-                <div>
-                    <label>To Time</label>
-                    <input type='time' value={endTime} onChange={(e)=>{setEndTime(e.target.value)}}/>
-                </div>
-                <div>
-                    <label>Description</label>
-                    <input type='text' value={description} onChange={(e)=>{setDescription(e.target.value)}}/>
-                </div>
-            </form>
+                        <div>
+                            <label>Event Title</label>
+                            <input type='text' value={title} onChange={(e)=>setTitle(e.target.value)} required/>
+                        </div>
+                        <div>
+                            <label>Event Date</label>
+                            <input type='date' value={eventDate} onChange={(e)=>{setEventDate(e.target.value)}} required/>
+                        </div>
+                        <div>
+                            <label>From Time</label>
+                            <input type='time' value={startTime} onChange={(e)=>{setStartTime(e.target.value)}} required/>
+                        </div>
+                        <div>
+                            <label>To Time</label>
+                            <input type='time' value={endTime} onChange={(e)=>{setEndTime(e.target.value)}} required/>
+                        </div>
+                        <div>
+                            <label>Description</label>
+                            <input type='text' value={description} onChange={(e)=>{setDescription(e.target.value)}}/>
+                        </div>
+                    </form>
                     <div className="modal-footer">
                         <button onClick={()=>handleCancel()}>Cancel</button>
                         <button onClick={isSubmit}>{isEditEvent ? "Update" : "Save"}</button>

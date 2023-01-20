@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { DataContext } from "../../DataContext/DataContext";
 import { ServiceContext } from "../../DataContext/Services";
 import './DeleteModal.scss';
-const DeleteModal = (props) =>{
-    console.log("open1")
+const DeleteModal = () =>{
+    // console.log("open1")
     const {isId} = useContext(DataContext);
     const {deleteEvent,setOpenDeleteModal} = useContext(ServiceContext);
     // const deleteEvent = props.deleteEvent;
